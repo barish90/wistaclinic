@@ -1,0 +1,249 @@
+{
+  "common": {
+    "learn_more": "Daha Fazla Bilgi",
+    "read_more": "Devamını Oku",
+    "back": "Geri",
+    "loading": "Yükleniyor..."
+  },
+  "nav": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "procedures": "İşlemler",
+    "doctors": "Doktorlar",
+    "gallery": "Galeri",
+    "testimonials": "Hasta Yorumları",
+    "pricing": "Fiyatlandırma",
+    "contact": "İletişim",
+    "bookConsultation": "Randevu Al"
+  },
+  "home": {
+    "hero": {
+      "kicker": "Dönüştürücü Estetik Ustalık",
+      "headlineLine1": "Hassasiyet.",
+      "headlineLine2": "Zarafet.",
+      "headlineLine3": "Siz.",
+      "subheadline": "İstanbul'da taviz vermeden sunulan dünya standartlarında estetik cerrahi ve sağlıklı yaşam.",
+      "badge1": "JCI Akreditasyonu",
+      "badge2": "15+ Yıl",
+      "badge3": "10.000+ Hasta",
+      "badge4": "%98 Memnuniyet",
+      "ctaPrimary": "Randevunuzu Alın",
+      "ctaSecondary": "WhatsApp ile İletişim",
+      "scrollHint": "Keşfetmek için kaydırın",
+      "established": "EST. ISTANBUL"
+    },
+    "pins": {
+      "artistry": {
+        "title": "Estetik Sanat",
+        "description": "Her işlem, sizin eşsiz güzelliğinize saygı duyan sarsılmaz bir estetik vizyonla yönlendirilen hassas bir ustalık eseridir."
+      },
+      "technology": {
+        "title": "Teknoloji",
+        "description": "Son teknoloji ameliyathaneler, 3D görüntüleme ve ileri cerrahi teknikler, beklentileri aşan sonuçlar sağlar."
+      },
+      "results": {
+        "title": "Sonuçlar",
+        "description": "Kendinizin en özgüvenli halini ortaya çıkaran doğal ve uyumlu dönüşümler. Binlerce hasta bakımımıza güveniyor."
+      }
+    },
+    "procedures": {
+      "title": "İşlemlerimiz",
+      "subtitle": "Bireysel hedeflerinize göre özelleştirilen cerrahi ve estetik tedavi yelpazemizi keşfedin.",
+      "view_all": "Tüm İşlemleri Görüntüle"
+    },
+    "whyIstanbul": {
+      "title": "Neden İstanbul?",
+      "subtitle": "Kültür ve tıbbi inovasyonun küresel buluşma noktası",
+      "description": "İstanbul, yüzyıllık şifa geleneğini son teknolojiyle birleştirerek dünyanın önde gelen medikal turizm destinasyonlarından biri haline gelmiştir.",
+      "points": [
+        "JCI akreditasyonlu, dünya standartlarında altyapıya sahip hastaneler",
+        "Avrupa ve Amerika'nın önde gelen kurumlarında eğitim almış cerrahlar",
+        "Kaliteden ödün vermeden önemli maliyet avantajı",
+        "İyileşme sürecinin keşifle buluştuğu canlı bir şehir"
+      ],
+      "stats": {
+        "experience": "15+",
+        "experience_label": "Yıllık Deneyim",
+        "patients": "10K+",
+        "patients_label": "Mutlu Hasta",
+        "satisfaction": "%98",
+        "satisfaction_label": "Memnuniyet"
+      }
+    },
+    "cta": {
+      "title": "Dönüşümünüze Başlayın",
+      "subtitle": "Uzmanlarımızla gizli bir görüşme planlayın ve yeni siz olma yolunda ilk adımı atın.",
+      "button": "Randevunuzu Alın"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Felsefemiz",
+      "description": "WistaClinic olarak güzelliğin son derece kişisel olduğuna inanıyoruz. Felsefemiz, cerrahi hassasiyeti sanatsal vizyonla birleştirerek sizin kadar eşsiz sonuçlar yaratmaktır."
+    },
+    "values": {
+      "title": "Değerlerimiz",
+      "items": [
+        {
+          "title": "Estetik Sanat",
+          "description": "Her işleme bir sanat eseri olarak yaklaşıyor, teknik ustalığı rafine bir estetik anlayışla harmanlıyoruz."
+        },
+        {
+          "title": "Güvenlik",
+          "description": "Hasta güvenliği tartışılamaz. En yüksek uluslararası standartlara ve protokollere bağlı kalıyoruz."
+        },
+        {
+          "title": "İnovasyon",
+          "description": "En son teknolojiye yatırım yapıyor ve optimum sonuçlar elde etmek için tekniklerimizi sürekli geliştiriyoruz."
+        },
+        {
+          "title": "Özen",
+          "description": "İlk görüşmenizden tam iyileşmeye kadar özel ekibimiz şefkatli ve kişiye özel bakım sunar."
+        }
+      ]
+    },
+    "tour": {
+      "title": "Kliniğimiz",
+      "description": "WistaClinic'in içine adım atın ve konfor, mahremiyet ve iyileşme için tasarlanmış bir mekanı deneyimleyin."
+    },
+    "accreditations": {
+      "title": "Akreditasyonlar ve Sertifikalar",
+      "description": "Uluslararası önde gelen sağlık kuruluşlarından aldığımız sertifikalarla gurur duyuyoruz."
+    }
+  },
+  "procedures": {
+    "index": {
+      "title": "İşlemlerimiz",
+      "subtitle": "Kapsamlı cerrahi ve estetik tedavi yelpazemizi keşfedin."
+    },
+    "detail": {
+      "overview": "Genel Bakış",
+      "steps": "Süreç",
+      "beforeAfter": "Sonuçlar",
+      "faq": "Sıkça Sorulan Sorular",
+      "ctaTitle": "Daha Fazla Bilgi Almak İster Misiniz?",
+      "ctaDescription": "Hedeflerinizi görüşmek ve kişiye özel tedavi planı oluşturmak için gizli bir danışma randevusu alın.",
+      "ctaButton": "Randevu Al"
+    }
+  },
+  "doctors": {
+    "title": "Uzmanlarımızla Tanışın",
+    "subtitle": "Uzman cerrahlarımız, onlarca yıllık deneyimi estetik mükemmellik tutkusuyla birleştirmektedir."
+  },
+  "contact": {
+    "title": "Bize Ulaşın",
+    "subtitle": "Sorularınızı yanıtlamak ve yolculuğunuza başlamanıza yardımcı olmak için buradayız.",
+    "form": {
+      "name": "Ad Soyad",
+      "email": "E-posta Adresi",
+      "phone": "Telefon Numarası",
+      "procedure": "İlgilendiğiniz İşlem",
+      "selectProcedure": "Bir işlem seçin",
+      "message": "Mesajınız",
+      "messagePlaceholder": "Hedeflerinizi ve sorularınızı bizimle paylaşın...",
+      "submit": "Mesaj Gönder"
+    },
+    "info": {
+      "title": "İletişim Bilgileri",
+      "address": "Merkez, Cendere Cad. No:9, 34406 Kagithane/Istanbul, Turkey",
+      "phone": "+90 507 080 8888",
+      "email": "info@wistaclinic.com",
+      "hours": "Pazartesi - Cumartesi: 09:00 - 18:00"
+    }
+  },
+  "gallery": {
+    "title": "Hasta Galerisi",
+    "subtitle": "Hastalarımızın elde ettiği dönüştürücü sonuçları görün.",
+    "filterAll": "Tümü",
+    "beforeLabel": "Önce",
+    "afterLabel": "Sonra",
+    "categories": {
+      "dental": "Diş",
+      "rhinoplasty": "Burun Estetiği",
+      "hair-transplant": "Saç Ekimi",
+      "body-contouring": "Vücut Şekillendirme",
+      "facial-aesthetics": "Yüz Estetiği",
+      "breast-augmentation": "Göğüs Büyütme"
+    }
+  },
+  "testimonials": {
+    "title": "Hasta Yorumları",
+    "subtitle": "WistaClinic farkını deneyimleyen hastalarımızın görüşlerini okuyun.",
+    "filterAll": "Tüm İşlemler",
+    "sortNewest": "En Yeniler",
+    "sortHighest": "En Yüksek Puan",
+    "averageRating": "Ortalama Puan",
+    "reviews": "değerlendirme",
+    "verifiedPatient": "Doğrulanmış Hasta"
+  },
+  "pricing": {
+    "title": "Fiyatlandırma ve Paketler",
+    "subtitle": "Dünya standartlarında bakım için şeffaf fiyatlandırma. Tüm paketler danışma, hastane ücretleri ve bakım sonrası hizmetleri içerir.",
+    "packages": "Tedavi Paketleri",
+    "procedurePricing": "İşlem Başlangıç Fiyatları",
+    "startingFrom": "Başlangıç fiyatı",
+    "getStarted": "Başlayın",
+    "mostPopular": "En Popüler",
+    "disclaimer": "Fiyatlar tahmini başlangıç fiyatlarıdır ve bireysel konsültasyona göre değişebilir. Tüm fiyatlar hastane ücretleri, cerrah ücretleri ve temel bakım sonrası hizmetleri içerir.",
+    "perProcedure": "işlem başına"
+  },
+  "privacy": {
+    "title": "Gizlilik Politikası",
+    "lastUpdated": "Son güncelleme: Şubat 2026"
+  },
+  "terms": {
+    "title": "Hizmet Şartları",
+    "lastUpdated": "Son güncelleme: Şubat 2026"
+  },
+  "footer": {
+    "description": "İstanbul'da dünya standartlarında cerrahi ve estetik mükemmellik. Bilim ve estetiğin buluştuğu nokta.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "contactUs": "Bize Ulaşın",
+    "followUs": "Bizi Takip Edin",
+    "rights": "Tüm hakları saklıdır.",
+    "privacyPolicy": "Gizlilik Politikası",
+    "termsOfService": "Hizmet Şartları"
+  },
+  "seo": {
+    "home": {
+      "title": "WistaClinic | Istanbul'da Dünya Standartlarında Cerrahi ve Estetik",
+      "description": "Istanbul'da dünya standartlarında cerrahi ve estetik hizmetler sunan WistaClinic ile tanışın. Uzman cerrahlar, son teknoloji ve kişiye özel bakım."
+    },
+    "about": {
+      "title": "Hakkımızda | WistaClinic Istanbul",
+      "description": "WistaClinic'in felsefesini, değerlerini ve Istanbul'da estetik mükemmellik taahhüdünü keşfedin."
+    },
+    "procedures": {
+      "title": "İşlemler | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul'da sunulan kapsamlı cerrahi ve estetik tedavi seçeneklerini inceleyin."
+    },
+    "doctors": {
+      "title": "Doktorlarımız | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul'daki deneyimli ve sertifikalı cerrahi ekibimizle tanışın."
+    },
+    "contact": {
+      "title": "İletişim | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul ile iletişime geçin. Ücretsiz danışma randevusu alın."
+    },
+    "gallery": {
+      "title": "Hasta Galerisi | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul hastalarının önce ve sonra fotoğraflarıyla dönüşüm sonuçlarını görün."
+    },
+    "testimonials": {
+      "title": "Hasta Yorumları | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul hastalarının deneyimlerini ve değerlendirmelerini okuyun."
+    },
+    "pricing": {
+      "title": "Fiyatlandırma | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul'daki cerrahi ve estetik işlemler için şeffaf fiyatlandırma ve paket seçenekleri."
+    },
+    "privacy": {
+      "title": "Gizlilik Politikası | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul gizlilik politikası ve kişisel verilerin korunması hakkında bilgi."
+    },
+    "terms": {
+      "title": "Hizmet Şartları | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul hizmet şartları ve kullanım koşulları."
+    }
+  }
+}

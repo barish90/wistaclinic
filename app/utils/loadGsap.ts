@@ -1,6 +1,9 @@
 /**
- * Dynamically loads GSAP libraries only when needed
- * This reduces initial bundle size by ~55KB
+ * Dynamically imports GSAP libraries + premium plugins from the npm package.
+ * Uses dynamic import() for code splitting — GSAP is only loaded when needed.
+ *
+ * Premium plugins (now free with GSAP 3.12+):
+ *   ScrollSmoother, SplitText, DrawSVGPlugin, CustomEase, Observer
  */
 
 declare global {
@@ -8,6 +11,12 @@ declare global {
     gsap: any;
     ScrollTrigger: any;
     ScrollToPlugin: any;
+    ScrollSmoother: any;
+    SplitText: any;
+    DrawSVGPlugin: any;
+    MorphSVGPlugin: any;
+    CustomEase: any;
+    Observer: any;
     confetti: any;
   }
 }
@@ -15,30 +24,72 @@ declare global {
 let gsapPromise: Promise<void> | null = null;
 
 export async function loadGsap(): Promise<void> {
-  // Return existing promise if already loading
   if (gsapPromise) {
     return gsapPromise;
   }
 
-  // Check if already loaded
-  if (window.gsap && window.ScrollTrigger) {
+  if (window.gsap && window.ScrollTrigger && window.SplitText && window.MorphSVGPlugin && window.DrawSVGPlugin) {
     return Promise.resolve();
   }
 
   gsapPromise = (async () => {
     try {
-      // Load scripts sequentially to ensure proper initialization
-      await loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js');
-      await loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js');
-      await loadScript('https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js');
+      const [
+        gsapModule,
+        scrollTriggerModule,
+        scrollToModule,
+        scrollSmootherModule,
+        splitTextModule,
+        drawSvgModule,
+        morphSvgModule,
+        customEaseModule,
+        observerModule,
+      ] = await Promise.all([
+        import('gsap'),
+        import('gsap/ScrollTrigger'),
+        import('gsap/ScrollToPlugin'),
+        import('gsap/ScrollSmoother'),
+        import('gsap/SplitText'),
+        import('gsap/DrawSVGPlugin'),
+        import('gsap/MorphSVGPlugin'),
+        import('gsap/CustomEase'),
+        import('gsap/Observer'),
+      ]);
 
-      // Register ScrollTrigger plugin
-      if (window.gsap && window.ScrollTrigger) {
-        window.gsap.registerPlugin(window.ScrollTrigger, window.ScrollToPlugin);
-      }
+      const gsap = gsapModule.default || gsapModule.gsap;
+      const ScrollTrigger = scrollTriggerModule.default || scrollTriggerModule.ScrollTrigger;
+      const ScrollToPlugin = scrollToModule.default || scrollToModule.ScrollToPlugin;
+      const ScrollSmoother = scrollSmootherModule.default || scrollSmootherModule.ScrollSmoother;
+      const SplitText = splitTextModule.default || splitTextModule.SplitText;
+      const DrawSVGPlugin = drawSvgModule.default || drawSvgModule.DrawSVGPlugin;
+      const MorphSVGPlugin = morphSvgModule.default || morphSvgModule.MorphSVGPlugin;
+      const CustomEase = customEaseModule.default || customEaseModule.CustomEase;
+      const Observer = observerModule.default || observerModule.Observer;
+
+      gsap.registerPlugin(
+        ScrollTrigger,
+        ScrollToPlugin,
+        ScrollSmoother,
+        SplitText,
+        DrawSVGPlugin,
+        MorphSVGPlugin,
+        CustomEase,
+        Observer,
+      );
+
+      // Attach to window for components that reference window.*
+      window.gsap = gsap;
+      window.ScrollTrigger = ScrollTrigger;
+      window.ScrollToPlugin = ScrollToPlugin;
+      window.ScrollSmoother = ScrollSmoother;
+      window.SplitText = SplitText;
+      window.DrawSVGPlugin = DrawSVGPlugin;
+      window.MorphSVGPlugin = MorphSVGPlugin;
+      window.CustomEase = CustomEase;
+      window.Observer = Observer;
     } catch (error) {
       console.error('Failed to load GSAP:', error);
-      gsapPromise = null; // Reset promise on error so it can be retried
+      gsapPromise = null;
       throw error;
     }
   })();
@@ -46,35 +97,27 @@ export async function loadGsap(): Promise<void> {
   return gsapPromise;
 }
 
+let confettiPromise: Promise<void> | null = null;
+
 export async function loadConfetti(): Promise<void> {
   if (window.confetti) {
     return Promise.resolve();
   }
 
-  try {
-    await loadScript('https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js');
-  } catch (error) {
-    console.error('Failed to load confetti:', error);
-    throw error;
+  if (confettiPromise) {
+    return confettiPromise;
   }
-}
 
-function loadScript(src: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    // Check if script already exists
-    const existing = document.querySelector(`script[src="${src}"]`);
-    if (existing) {
-      resolve();
-      return;
+  confettiPromise = (async () => {
+    try {
+      const confettiModule = await import('canvas-confetti');
+      window.confetti = confettiModule.default || confettiModule;
+    } catch (error) {
+      console.error('Failed to load confetti:', error);
+      confettiPromise = null;
+      throw error;
     }
+  })();
 
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-
-    document.head.appendChild(script);
-  });
+  return confettiPromise;
 }

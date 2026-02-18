@@ -1,0 +1,249 @@
+{
+  "common": {
+    "learn_more": "Mehr erfahren",
+    "read_more": "Weiterlesen",
+    "back": "Zurück",
+    "loading": "Wird geladen..."
+  },
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "procedures": "Behandlungen",
+    "doctors": "Ärzte",
+    "gallery": "Galerie",
+    "testimonials": "Erfahrungsberichte",
+    "pricing": "Preise",
+    "contact": "Kontakt",
+    "bookConsultation": "Beratung buchen"
+  },
+  "home": {
+    "hero": {
+      "kicker": "Transformative ästhetische Meisterschaft",
+      "headlineLine1": "Präzision.",
+      "headlineLine2": "Eleganz.",
+      "headlineLine3": "Sie.",
+      "subheadline": "Weltklasse ästhetische Chirurgie und Wellness, kompromisslos geliefert in Istanbul.",
+      "badge1": "JCI-akkreditiert",
+      "badge2": "15+ Jahre",
+      "badge3": "10.000+ Patienten",
+      "badge4": "98% Zufriedenheit",
+      "ctaPrimary": "Beratung buchen",
+      "ctaSecondary": "Kontakt über WhatsApp",
+      "scrollHint": "Scrollen zum Entdecken",
+      "established": "EST. ISTANBUL"
+    },
+    "pins": {
+      "artistry": {
+        "title": "Ästhetik",
+        "description": "Jede Behandlung ist ein Meisterwerk der Präzision, geleitet von einer kompromisslosen ästhetischen Vision, die Ihre einzigartige Schönheit würdigt."
+      },
+      "technology": {
+        "title": "Technologie",
+        "description": "Modernste Operationssäle, 3D-Bildgebung und innovative Techniken gewährleisten Ergebnisse, die Ihre Erwartungen übertreffen."
+      },
+      "results": {
+        "title": "Ergebnisse",
+        "description": "Natürliche, harmonische Veränderungen, die die selbstbewussteste Version Ihrer selbst zum Vorschein bringen. Tausende Patienten vertrauen unserer Betreuung."
+      }
+    },
+    "procedures": {
+      "title": "Unsere Behandlungen",
+      "subtitle": "Entdecken Sie unser Spektrum an chirurgischen und ästhetischen Behandlungen, individuell auf Ihre persönlichen Ziele abgestimmt.",
+      "view_all": "Alle Behandlungen anzeigen"
+    },
+    "whyIstanbul": {
+      "title": "Warum Istanbul?",
+      "subtitle": "Ein globaler Knotenpunkt für Kultur und medizinische Innovation",
+      "description": "Istanbul hat sich zu einem der weltweit führenden Ziele für Medizintourismus entwickelt und verbindet eine jahrhundertealte Heiltradition mit modernster Technologie.",
+      "points": [
+        "JCI-akkreditierte Krankenhäuser mit erstklassiger Infrastruktur",
+        "Chirurgen, ausgebildet an führenden europäischen und amerikanischen Institutionen",
+        "Erhebliche Kosteneinsparungen ohne Qualitätseinbußen",
+        "Eine lebendige Stadt, in der Erholung auf Entdeckung trifft"
+      ],
+      "stats": {
+        "experience": "15+",
+        "experience_label": "Jahre Erfahrung",
+        "patients": "10K+",
+        "patients_label": "Zufriedene Patienten",
+        "satisfaction": "98%",
+        "satisfaction_label": "Zufriedenheit"
+      }
+    },
+    "cta": {
+      "title": "Beginnen Sie Ihre Verwandlung",
+      "subtitle": "Vereinbaren Sie ein vertrauliches Beratungsgespräch mit unseren Spezialisten und machen Sie den ersten Schritt zu einem neuen Ich.",
+      "button": "Beratung vereinbaren"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Unsere Philosophie",
+      "description": "Bei WistaClinic glauben wir, dass Schönheit zutiefst persönlich ist. Unsere Philosophie vereint chirurgische Präzision mit ästhetischer Vision und schafft Ergebnisse, die so einzigartig sind wie Sie selbst."
+    },
+    "values": {
+      "title": "Unsere Werte",
+      "items": [
+        {
+          "title": "Ästhetik",
+          "description": "Wir betrachten jede Behandlung als Kunstwerk und verbinden technische Meisterschaft mit einem ausgeprägten ästhetischen Gespür."
+        },
+        {
+          "title": "Sicherheit",
+          "description": "Patientensicherheit ist nicht verhandelbar. Wir halten uns an die höchsten internationalen Standards und Protokolle."
+        },
+        {
+          "title": "Innovation",
+          "description": "Wir investieren in neueste Technologien und entwickeln unsere Techniken kontinuierlich weiter, um optimale Ergebnisse zu erzielen."
+        },
+        {
+          "title": "Fürsorge",
+          "description": "Von Ihrem ersten Beratungsgespräch bis zur vollständigen Genesung bietet unser engagiertes Team einfühlsame, individuelle Betreuung."
+        }
+      ]
+    },
+    "tour": {
+      "title": "Unsere Klinik",
+      "description": "Treten Sie ein in WistaClinic und erleben Sie einen Raum, der für Komfort, Privatsphäre und Heilung gestaltet wurde."
+    },
+    "accreditations": {
+      "title": "Akkreditierungen & Zertifizierungen",
+      "description": "Wir sind stolz darauf, Zertifizierungen von führenden internationalen Gesundheitsorganisationen zu tragen."
+    }
+  },
+  "procedures": {
+    "index": {
+      "title": "Unsere Behandlungen",
+      "subtitle": "Entdecken Sie unser umfassendes Angebot an chirurgischen und ästhetischen Behandlungen."
+    },
+    "detail": {
+      "overview": "Überblick",
+      "steps": "Der Ablauf",
+      "beforeAfter": "Ergebnisse",
+      "faq": "Häufig gestellte Fragen",
+      "ctaTitle": "Möchten Sie mehr erfahren?",
+      "ctaDescription": "Vereinbaren Sie ein vertrauliches Beratungsgespräch, um Ihre Ziele zu besprechen und einen individuellen Behandlungsplan zu erstellen.",
+      "ctaButton": "Beratung buchen"
+    }
+  },
+  "doctors": {
+    "title": "Lernen Sie unsere Spezialisten kennen",
+    "subtitle": "Unsere zertifizierten Chirurgen vereinen jahrzehntelange Erfahrung mit einer Leidenschaft für ästhetische Exzellenz."
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Wir sind hier, um Ihre Fragen zu beantworten und Ihnen bei den ersten Schritten Ihrer Reise zu helfen.",
+    "form": {
+      "name": "Vollständiger Name",
+      "email": "E-Mail-Adresse",
+      "phone": "Telefonnummer",
+      "procedure": "Gewünschte Behandlung",
+      "selectProcedure": "Behandlung auswählen",
+      "message": "Ihre Nachricht",
+      "messagePlaceholder": "Erzählen Sie uns von Ihren Zielen und Ihren Fragen...",
+      "submit": "Nachricht senden"
+    },
+    "info": {
+      "title": "Kontaktinformationen",
+      "address": "Merkez, Cendere Cad. No:9, 34406 Kagithane/Istanbul, Turkey",
+      "phone": "+90 507 080 8888",
+      "email": "info@wistaclinic.com",
+      "hours": "Montag - Samstag: 09:00 - 18:00"
+    }
+  },
+  "gallery": {
+    "title": "Patientengalerie",
+    "subtitle": "Sehen Sie die beeindruckenden Ergebnisse, die unsere Patienten erzielt haben.",
+    "filterAll": "Alle",
+    "beforeLabel": "Vorher",
+    "afterLabel": "Nachher",
+    "categories": {
+      "dental": "Zahnmedizin",
+      "rhinoplasty": "Nasenkorrektur",
+      "hair-transplant": "Haartransplantation",
+      "body-contouring": "Körperformung",
+      "facial-aesthetics": "Gesichtsästhetik",
+      "breast-augmentation": "Brustvergrößerung"
+    }
+  },
+  "testimonials": {
+    "title": "Patientenbewertungen",
+    "subtitle": "Erfahren Sie von Patienten, die den WistaClinic-Unterschied erlebt haben.",
+    "filterAll": "Alle Behandlungen",
+    "sortNewest": "Neueste zuerst",
+    "sortHighest": "Beste Bewertung",
+    "averageRating": "Durchschnittliche Bewertung",
+    "reviews": "Bewertungen",
+    "verifiedPatient": "Verifizierter Patient"
+  },
+  "pricing": {
+    "title": "Preise & Pakete",
+    "subtitle": "Transparente Preise für erstklassige Versorgung. Alle Pakete beinhalten Beratung, Krankenhausgebühren und Nachsorge.",
+    "packages": "Behandlungspakete",
+    "procedurePricing": "Startpreise der Behandlungen",
+    "startingFrom": "Ab",
+    "getStarted": "Jetzt starten",
+    "mostPopular": "Am beliebtesten",
+    "disclaimer": "Die Preise sind Schätzungen und können je nach individueller Beratung variieren. Alle Preise beinhalten Krankenhausgebühren, Chirurgenhonorar und grundlegende Nachsorge.",
+    "perProcedure": "pro Behandlung"
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "lastUpdated": "Zuletzt aktualisiert: Februar 2026"
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "lastUpdated": "Zuletzt aktualisiert: Februar 2026"
+  },
+  "footer": {
+    "description": "Erstklassige chirurgische und ästhetische Exzellenz in Istanbul. Wo Wissenschaft auf Ästhetik trifft.",
+    "quickLinks": "Schnellzugriff",
+    "contactUs": "Kontakt",
+    "followUs": "Folgen Sie uns",
+    "rights": "Alle Rechte vorbehalten.",
+    "privacyPolicy": "Datenschutzerklärung",
+    "termsOfService": "Nutzungsbedingungen"
+  },
+  "seo": {
+    "home": {
+      "title": "WistaClinic | Erstklassige Chirurgie und Ästhetik in Istanbul",
+      "description": "WistaClinic bietet erstklassige chirurgische und ästhetische Behandlungen in Istanbul. Erfahrene Chirurgen, modernste Technologie und individuelle Betreuung."
+    },
+    "about": {
+      "title": "Über uns | WistaClinic Istanbul",
+      "description": "Entdecken Sie die Philosophie, Werte und das Engagement von WistaClinic für ästhetische Exzellenz in Istanbul."
+    },
+    "procedures": {
+      "title": "Behandlungen | WistaClinic Istanbul",
+      "description": "Entdecken Sie das umfassende Angebot an chirurgischen und ästhetischen Behandlungen bei WistaClinic Istanbul."
+    },
+    "doctors": {
+      "title": "Unsere Ärzte | WistaClinic Istanbul",
+      "description": "Lernen Sie das erfahrene und zertifizierte Chirurgenteam von WistaClinic Istanbul kennen."
+    },
+    "contact": {
+      "title": "Kontakt | WistaClinic Istanbul",
+      "description": "Kontaktieren Sie WistaClinic Istanbul. Vereinbaren Sie eine kostenlose Beratung."
+    },
+    "gallery": {
+      "title": "Patientengalerie | WistaClinic Istanbul",
+      "description": "Sehen Sie Vorher-Nachher-Fotos und Ergebnisse der Patienten von WistaClinic Istanbul."
+    },
+    "testimonials": {
+      "title": "Patientenbewertungen | WistaClinic Istanbul",
+      "description": "Lesen Sie Erfahrungsberichte und Bewertungen von WistaClinic Istanbul Patienten."
+    },
+    "pricing": {
+      "title": "Preise | WistaClinic Istanbul",
+      "description": "Transparente Preise und Paketoptionen für chirurgische und ästhetische Behandlungen bei WistaClinic Istanbul."
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung | WistaClinic Istanbul",
+      "description": "Datenschutzerklärung und Informationen zum Schutz personenbezogener Daten bei WistaClinic Istanbul."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen | WistaClinic Istanbul",
+      "description": "Nutzungsbedingungen und Geschäftsbedingungen von WistaClinic Istanbul."
+    }
+  }
+}

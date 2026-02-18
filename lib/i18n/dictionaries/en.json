@@ -1,0 +1,249 @@
+{
+  "common": {
+    "learn_more": "Learn More",
+    "read_more": "Read More",
+    "back": "Back",
+    "loading": "Loading..."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "procedures": "Procedures",
+    "doctors": "Doctors",
+    "gallery": "Gallery",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "bookConsultation": "Book Consultation"
+  },
+  "home": {
+    "hero": {
+      "kicker": "Transformative Aesthetic Mastery",
+      "headlineLine1": "Precision.",
+      "headlineLine2": "Elegance.",
+      "headlineLine3": "You.",
+      "subheadline": "World-class aesthetic surgery and wellness, delivered with uncompromising care in Istanbul.",
+      "badge1": "JCI Accredited",
+      "badge2": "15+ Years",
+      "badge3": "10,000+ Patients",
+      "badge4": "98% Satisfaction",
+      "ctaPrimary": "Book Your Consultation",
+      "ctaSecondary": "Contact via WhatsApp",
+      "scrollHint": "Scroll to explore",
+      "established": "EST. ISTANBUL"
+    },
+    "services": {
+      "title": "Our Procedures",
+      "subtitle": "Surgical and aesthetic treatments tailored to your individual goals.",
+      "viewAll": "View All Procedures"
+    },
+    "journey": {
+      "title": "Your Patient Journey",
+      "subtitle": "From first consultation to full recovery — we guide every step.",
+      "steps": [
+        {
+          "title": "Free Consultation",
+          "description": "Share your goals via video call. We create a personalized assessment and transparent quote."
+        },
+        {
+          "title": "Personalized Plan",
+          "description": "Your surgeon designs a tailored treatment plan with 3D imaging and detailed expectations."
+        },
+        {
+          "title": "Travel & Arrival",
+          "description": "VIP airport transfer, luxury hotel, and a dedicated patient coordinator from day one."
+        },
+        {
+          "title": "Your Procedure",
+          "description": "State-of-the-art surgical suites with board-certified specialists and full anesthesia care."
+        },
+        {
+          "title": "Recovery & Follow-up",
+          "description": "Post-op care, medication, check-ups, and 12-month remote follow-up included."
+        }
+      ]
+    },
+    "doctors": {
+      "title": "Meet Our Specialists",
+      "subtitle": "Board-certified surgeons with decades of combined experience.",
+      "viewProfile": "View Profile"
+    },
+    "results": {
+      "title": "Real Results",
+      "subtitle": "Transformations that speak for themselves.",
+      "viewGallery": "View Full Gallery",
+      "stats": {
+        "procedures": "12,000+",
+        "proceduresLabel": "Procedures Performed",
+        "countries": "45+",
+        "countriesLabel": "Countries Served",
+        "satisfaction": "98%",
+        "satisfactionLabel": "Patient Satisfaction"
+      }
+    },
+    "testimonialsSection": {
+      "title": "Patient Stories",
+      "subtitle": "Hear from patients who chose WistaClinic."
+    },
+    "cta": {
+      "title": "Begin Your Transformation",
+      "subtitle": "Schedule a confidential consultation with our specialists and take the first step toward the new you.",
+      "button": "Book Your Consultation",
+      "trust": ["Free Consultation", "No Hidden Fees", "Lifetime Follow-up"]
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Our Philosophy",
+      "description": "At WistaClinic, we believe that beauty is deeply personal. Our philosophy merges surgical precision with artistic vision, creating results that are as unique as you are."
+    },
+    "values": {
+      "title": "Our Values",
+      "items": [
+        {
+          "title": "Artistry",
+          "description": "We approach every procedure as a work of art, blending technical mastery with a refined aesthetic sensibility."
+        },
+        {
+          "title": "Safety",
+          "description": "Patient safety is non-negotiable. We adhere to the highest international standards and protocols."
+        },
+        {
+          "title": "Innovation",
+          "description": "We invest in the latest technology and continuously advance our techniques to deliver optimal outcomes."
+        },
+        {
+          "title": "Care",
+          "description": "From your first consultation to full recovery, our dedicated team provides compassionate, personalized care."
+        }
+      ]
+    },
+    "tour": {
+      "title": "Our Clinic",
+      "description": "Step inside WistaClinic and experience a space designed for comfort, privacy, and healing."
+    },
+    "accreditations": {
+      "title": "Accreditations & Certifications",
+      "description": "We are proud to hold certifications from leading international healthcare organizations."
+    }
+  },
+  "procedures": {
+    "index": {
+      "title": "Our Procedures",
+      "subtitle": "Explore our comprehensive range of surgical and aesthetic treatments."
+    },
+    "detail": {
+      "overview": "Overview",
+      "steps": "The Process",
+      "beforeAfter": "Results",
+      "faq": "Frequently Asked Questions",
+      "ctaTitle": "Ready to Learn More?",
+      "ctaDescription": "Schedule a confidential consultation to discuss your goals and create a personalized treatment plan.",
+      "ctaButton": "Book Consultation"
+    }
+  },
+  "doctors": {
+    "title": "Meet Our Specialists",
+    "subtitle": "Our board-certified surgeons combine decades of experience with a passion for aesthetic excellence."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We are here to answer your questions and help you begin your journey.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "procedure": "Procedure of Interest",
+      "selectProcedure": "Select a procedure",
+      "message": "Your Message",
+      "messagePlaceholder": "Tell us about your goals and any questions you have...",
+      "submit": "Send Message"
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Merkez, Cendere Cad. No:9, 34406 Kagithane/Istanbul, Turkey",
+      "phone": "+90 507 080 8888",
+      "email": "info@wistaclinic.com",
+      "hours": "Monday - Saturday: 09:00 - 18:00"
+    }
+  },
+  "gallery": {
+    "title": "Patient Gallery",
+    "subtitle": "See the transformative results our patients have achieved.",
+    "filterAll": "All",
+    "beforeLabel": "Before",
+    "afterLabel": "After",
+    "categories": {
+      "dental": "Dental",
+      "rhinoplasty": "Rhinoplasty",
+      "hair-transplant": "Hair Transplant",
+      "body-contouring": "Body Contouring",
+      "facial-aesthetics": "Facial Aesthetics",
+      "breast-augmentation": "Breast Augmentation"
+    }
+  },
+  "testimonials": {
+    "title": "Patient Testimonials",
+    "subtitle": "Hear from patients who have experienced the WistaClinic difference.",
+    "filterAll": "All Procedures",
+    "sortNewest": "Newest First",
+    "sortHighest": "Highest Rated",
+    "averageRating": "Average Rating",
+    "reviews": "reviews",
+    "verifiedPatient": "Verified Patient"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: February 2026"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: February 2026"
+  },
+  "footer": {
+    "description": "World-class surgical and aesthetic excellence in Istanbul. Where science meets artistry.",
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
+  },
+  "seo": {
+    "home": {
+      "title": "WistaClinic - Surgical & Aesthetic Excellence in Istanbul",
+      "description": "World-class cosmetic surgery and aesthetic treatments in Istanbul, Turkey. Rhinoplasty, hair transplant, body contouring, and more by board-certified surgeons."
+    },
+    "about": {
+      "title": "About WistaClinic - Our Philosophy & Values",
+      "description": "Learn about WistaClinic's commitment to surgical excellence, patient safety, and artistic vision in Istanbul, Turkey."
+    },
+    "procedures": {
+      "title": "Cosmetic Procedures - WistaClinic Istanbul",
+      "description": "Explore our comprehensive range of surgical and aesthetic treatments including rhinoplasty, breast augmentation, liposuction, and more."
+    },
+    "doctors": {
+      "title": "Our Specialists - Board-Certified Surgeons at WistaClinic",
+      "description": "Meet our team of board-certified plastic surgeons and aesthetic specialists with decades of combined experience."
+    },
+    "contact": {
+      "title": "Contact WistaClinic - Book Your Consultation",
+      "description": "Get in touch with WistaClinic in Istanbul. Schedule a confidential consultation and begin your transformation journey."
+    },
+    "gallery": {
+      "title": "Patient Gallery - Before & After Results | WistaClinic",
+      "description": "View transformative before and after results from WistaClinic patients. See real outcomes from our cosmetic procedures."
+    },
+    "testimonials": {
+      "title": "Patient Testimonials & Reviews | WistaClinic Istanbul",
+      "description": "Read verified patient testimonials and reviews about their experience at WistaClinic in Istanbul."
+    },
+    "privacy": {
+      "title": "Privacy Policy - WistaClinic",
+      "description": "WistaClinic's privacy policy. Learn how we collect, use, and protect your personal and medical information."
+    },
+    "terms": {
+      "title": "Terms of Service - WistaClinic",
+      "description": "WistaClinic's terms of service, medical disclaimers, and patient responsibilities."
+    }
+  }
+}

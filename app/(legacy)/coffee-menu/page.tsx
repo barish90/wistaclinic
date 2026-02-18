@@ -312,11 +312,11 @@ export default function CoffeeMenu() {
               </h3>
 
               <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                While your beverage is being prepared, we'd love to hear about your experience at WistaClinic. Your feedback helps us serve you better!
+                While your beverage is being prepared, we&apos;d love to hear about your experience at WistaClinic. Your feedback helps us serve you better!
               </p>
 
               <a
-                href="https://search.google.com/local/writereview?placeid=ChIJa4cBYZa7yhQRXXELf19KbAU"
+                href={`https://search.google.com/local/writereview?placeid=${process.env.NEXT_PUBLIC_GOOGLE_PLACE_ID || 'ChIJa4cBYZa7yhQRXXELf19KbAU'}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"

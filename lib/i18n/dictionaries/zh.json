@@ -1,0 +1,237 @@
+{
+  "common": {
+    "learn_more": "了解更多",
+    "read_more": "阅读更多",
+    "back": "返回",
+    "loading": "加载中..."
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "procedures": "医疗项目",
+    "doctors": "医生团队",
+    "gallery": "患者案例",
+    "testimonials": "患者评价",
+    "pricing": "价格",
+    "contact": "联系我们",
+    "bookConsultation": "预约咨询"
+  },
+  "home": {
+    "hero": {
+      "kicker": "蜕变美学造诣",
+      "headlineLine1": "精准。",
+      "headlineLine2": "优雅。",
+      "headlineLine3": "成就您。",
+      "subheadline": "伊斯坦布尔提供世界级美容外科与健康服务，坚守无妥协的高品质护理。",
+      "badge1": "JCI 认证",
+      "badge2": "15+ 年",
+      "badge3": "10,000+ 患者",
+      "badge4": "98% 满意度",
+      "ctaPrimary": "预约咨询",
+      "ctaSecondary": "通过 WhatsApp 联系",
+      "scrollHint": "滚动探索",
+      "established": "EST. ISTANBUL"
+    },
+    "pins": {
+      "artistry": {
+        "title": "匠心美学",
+        "description": "每一项手术都是精准的杰作，以坚定的美学理念为指引，尊重并彰显您独特的美丽。"
+      },
+      "technology": {
+        "title": "尖端科技",
+        "description": "先进的手术室、3D影像技术和前沿手术方法，确保超越期望的卓越效果。"
+      },
+      "results": {
+        "title": "卓越成效",
+        "description": "自然、和谐的蜕变，展现最自信的您。数以千计的患者信赖我们的医疗服务。"
+      }
+    },
+    "procedures": {
+      "title": "医疗项目",
+      "subtitle": "探索我们全面的外科与医学美容项目，每一项都根据您的个人目标量身定制。",
+      "view_all": "查看全部项目"
+    },
+    "whyIstanbul": {
+      "title": "为什么选择 Istanbul？",
+      "subtitle": "文化与医疗创新的国际交汇点",
+      "description": "Istanbul 已成为全球首选的医疗旅游目的地之一，将数百年的医学传统与尖端技术完美融合。",
+      "points": [
+        "拥有 JCI 认证的医院及世界级医疗基础设施",
+        "在欧美顶级医学院受训的外科医生",
+        "在不降低品质的前提下显著节约费用",
+        "一座充满活力的城市，让术后恢复与探索之旅相伴而行"
+      ],
+      "stats": {
+        "experience": "15+",
+        "experience_label": "年丰富经验",
+        "patients": "10K+",
+        "patients_label": "满意患者",
+        "satisfaction": "98%",
+        "satisfaction_label": "满意度"
+      }
+    },
+    "cta": {
+      "title": "开启您的蜕变之旅",
+      "subtitle": "预约与我们专家的私密咨询，迈出焕然一新的第一步。",
+      "button": "预约咨询"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "我们的理念",
+      "description": "在 WistaClinic，我们坚信美是极其个人化的。我们的理念将外科精准与艺术视野融为一体，打造与您一样独一无二的效果。"
+    },
+    "values": {
+      "title": "我们的价值观",
+      "items": [
+        {"title": "匠心美学", "description": "我们将每一项手术视为艺术创作，将精湛技术与高雅审美融为一体。"},
+        {"title": "安全至上", "description": "患者安全是不可妥协的底线。我们严格遵循最高国际标准和医疗规范。"},
+        {"title": "持续创新", "description": "我们持续投资最新技术，不断精进手术方法，以实现最佳治疗效果。"},
+        {"title": "悉心关怀", "description": "从首次咨询到完全康复，我们的专业团队为您提供充满关怀的个性化服务。"}
+      ]
+    },
+    "tour": {
+      "title": "我们的诊所",
+      "description": "走进 WistaClinic，体验专为舒适、隐私和康复而设计的医疗空间。"
+    },
+    "accreditations": {
+      "title": "资质认证",
+      "description": "我们荣获多项国际权威医疗机构的认证，品质值得信赖。"
+    }
+  },
+  "procedures": {
+    "index": {
+      "title": "医疗项目",
+      "subtitle": "浏览我们全面的外科与医学美容项目。"
+    },
+    "detail": {
+      "overview": "项目概述",
+      "steps": "治疗流程",
+      "beforeAfter": "治疗效果",
+      "faq": "常见问题",
+      "ctaTitle": "想了解更多？",
+      "ctaDescription": "预约私密咨询，与专家讨论您的目标并制定个性化治疗方案。",
+      "ctaButton": "预约咨询"
+    }
+  },
+  "doctors": {
+    "title": "专家团队",
+    "subtitle": "我们的认证外科医生拥有数十年临床经验，对医学美容精益求精。"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "我们随时为您解答疑问，助您开启健康美丽之旅。",
+    "form": {
+      "name": "姓名",
+      "email": "电子邮箱",
+      "phone": "联系电话",
+      "procedure": "感兴趣的项目",
+      "selectProcedure": "请选择项目",
+      "message": "您的留言",
+      "messagePlaceholder": "请告诉我们您的目标和任何疑问...",
+      "submit": "发送留言"
+    },
+    "info": {
+      "title": "联系方式",
+      "address": "Merkez, Cendere Cad. No:9, 34406 Kagithane/Istanbul, Turkey",
+      "phone": "+90 507 080 8888",
+      "email": "info@wistaclinic.com",
+      "hours": "周一至周六: 09:00 - 18:00"
+    }
+  },
+  "gallery": {
+    "title": "患者案例",
+    "subtitle": "查看我们患者取得的惊人蜕变效果。",
+    "filterAll": "全部",
+    "beforeLabel": "术前",
+    "afterLabel": "术后",
+    "categories": {
+      "dental": "牙科",
+      "rhinoplasty": "鼻整形",
+      "hair-transplant": "毛发移植",
+      "body-contouring": "体型塑造",
+      "facial-aesthetics": "面部美容",
+      "breast-augmentation": "隆胸"
+    }
+  },
+  "testimonials": {
+    "title": "患者评价",
+    "subtitle": "听听体验过 WistaClinic 卓越服务的患者怎么说。",
+    "filterAll": "所有项目",
+    "sortNewest": "最新优先",
+    "sortHighest": "最高评分",
+    "averageRating": "平均评分",
+    "reviews": "条评价",
+    "verifiedPatient": "已验证患者"
+  },
+  "pricing": {
+    "title": "价格与套餐",
+    "subtitle": "世界级医疗服务的透明定价。所有套餐包含咨询、医院费用和术后护理。",
+    "packages": "治疗套餐",
+    "procedurePricing": "项目起始价格",
+    "startingFrom": "起价",
+    "getStarted": "立即开始",
+    "mostPopular": "最受欢迎",
+    "disclaimer": "价格为预估起始价，可能因个人咨询结果而有所不同。所有价格包含医院费用、医生费用和基本术后护理。",
+    "perProcedure": "每项目"
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "lastUpdated": "最后更新：2026年2月"
+  },
+  "terms": {
+    "title": "服务条款",
+    "lastUpdated": "最后更新：2026年2月"
+  },
+  "footer": {
+    "description": "Istanbul 世界级外科与医学美容卓越中心。科学与艺术的完美融合。",
+    "quickLinks": "快速链接",
+    "contactUs": "联系我们",
+    "followUs": "关注我们",
+    "rights": "版权所有。",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款"
+  },
+  "seo": {
+    "home": {
+      "title": "WistaClinic | Istanbul 世界级外科与医学美容中心",
+      "description": "WistaClinic 在 Istanbul 提供世界级外科与医学美容服务。资深医生、尖端技术、个性化医疗方案。"
+    },
+    "about": {
+      "title": "关于我们 | WistaClinic Istanbul",
+      "description": "了解 WistaClinic 的理念、价值观以及对 Istanbul 医学美容卓越品质的承诺。"
+    },
+    "procedures": {
+      "title": "医疗项目 | WistaClinic Istanbul",
+      "description": "浏览 WistaClinic Istanbul 提供的全面外科与医学美容治疗项目。"
+    },
+    "doctors": {
+      "title": "医生团队 | WistaClinic Istanbul",
+      "description": "认识 WistaClinic Istanbul 经验丰富的认证外科医生团队。"
+    },
+    "contact": {
+      "title": "联系我们 | WistaClinic Istanbul",
+      "description": "联系 WistaClinic Istanbul，预约免费咨询。"
+    },
+    "gallery": {
+      "title": "患者案例 | WistaClinic Istanbul",
+      "description": "查看 WistaClinic Istanbul 患者的术前术后对比照片和治疗效果。"
+    },
+    "testimonials": {
+      "title": "患者评价 | WistaClinic Istanbul",
+      "description": "阅读 WistaClinic Istanbul 患者的真实评价和体验分享。"
+    },
+    "pricing": {
+      "title": "价格 | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul 外科与医学美容项目的透明价格与套餐方案。"
+    },
+    "privacy": {
+      "title": "隐私政策 | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul 隐私政策及个人数据保护信息。"
+    },
+    "terms": {
+      "title": "服务条款 | WistaClinic Istanbul",
+      "description": "WistaClinic Istanbul 服务条款与使用条件。"
+    }
+  }
+}

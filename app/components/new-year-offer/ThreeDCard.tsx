@@ -383,7 +383,7 @@ const ThreeDCard: React.FC<ThreeDCardProps> = ({ unwrapProgress, onClick }) => {
                         <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-[2px] h-12 bg-gold-200"></div>
 
                         <div className="flex flex-col items-center mt-2">
-                             <span className="font-serif text-red-800 text-xl font-bold italic whitespace-nowrap">Season's Greetings</span>
+                             <span className="font-serif text-red-800 text-xl font-bold italic whitespace-nowrap">Season&apos;s Greetings</span>
                         </div>
                         <div className="w-full h-[1px] bg-gold-300 my-1"></div>
                         <div className="flex flex-col items-center text-center">
