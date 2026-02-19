@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
+import { reportError } from '@/lib/errors';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -46,7 +47,7 @@ export async function POST(request: Request) {
       message: 'Thank you for your message. We will contact you soon!',
     });
   } catch (error) {
-    console.error('Error in contact route:', error instanceof Error ? error.message : 'Unknown error');
+    reportError(error, 'contact route');
     return NextResponse.json(
       { success: false, errors: { _form: ['An unexpected error occurred. Please try again.'] } },
       { status: 500 }

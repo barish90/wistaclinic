@@ -8,6 +8,7 @@ import DepartmentSection from '@/app/components/new-year-offer/DepartmentSection
 import Footer from '@/app/components/new-year-offer/Footer'
 import { DEPARTMENTS } from '@/app/components/new-year-offer/constants'
 import { loadGsap, loadConfetti } from '@/app/utils/loadGsap'
+import { reportError } from '@/lib/errors'
 
 declare global {
   interface Window {
@@ -27,9 +28,7 @@ export default function NewYearOfferPage() {
     Promise.all([loadGsap(), loadConfetti()])
       .then(() => setGsapLoaded(true))
       .catch(error => {
-        if (process.env.NODE_ENV === 'development') {
-          console.warn('[NewYearOffer] Failed to load animation libraries:', error);
-        }
+        reportError(error, 'NewYearOffer');
         setLoadError(true);
       })
   }, [])

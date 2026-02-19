@@ -73,24 +73,28 @@ export function Footer({ locale, dict }: FooterProps) {
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
                 <span>{dict.contact?.info?.address ?? ''}</span>
               </li>
-              <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone className="h-4 w-4 shrink-0 text-primary" />
-                <a
-                  href={`tel:${dict.contact?.info?.phone ?? ''}`}
-                  className="transition-colors hover:text-primary"
-                >
-                  {dict.contact?.info?.phone ?? ''}
-                </a>
-              </li>
-              <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Mail className="h-4 w-4 shrink-0 text-primary" />
-                <a
-                  href={`mailto:${dict.contact?.info?.email ?? ''}`}
-                  className="transition-colors hover:text-primary"
-                >
-                  {dict.contact?.info?.email ?? ''}
-                </a>
-              </li>
+              {dict.contact?.info?.phone ? (
+                <li className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <Phone className="h-4 w-4 shrink-0 text-primary" />
+                  <a
+                    href={`tel:${dict.contact.info.phone}`}
+                    className="transition-colors hover:text-primary"
+                  >
+                    {dict.contact.info.phone}
+                  </a>
+                </li>
+              ) : null}
+              {dict.contact?.info?.email ? (
+                <li className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <Mail className="h-4 w-4 shrink-0 text-primary" />
+                  <a
+                    href={`mailto:${dict.contact.info.email}`}
+                    className="transition-colors hover:text-primary"
+                  >
+                    {dict.contact.info.email}
+                  </a>
+                </li>
+              ) : null}
             </ul>
           </div>
         </div>
