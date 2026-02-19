@@ -603,7 +603,7 @@ export default function GrandFoyerHero({ locale, dict }: GrandFoyerHeroProps) {
               {hero.established || 'EST. ISTANBUL'}
             </div>
 
-            {[hero.badge1, hero.badge2, hero.badge3, hero.badge4].filter(Boolean).map((badge, i) => (
+            {(() => { const badges = [hero.badge1, hero.badge2, hero.badge3, hero.badge4].filter(Boolean); return badges.map((badge, i) => (
               <div
                 key={i}
                 style={{
@@ -611,7 +611,7 @@ export default function GrandFoyerHero({ locale, dict }: GrandFoyerHeroProps) {
                   alignItems: 'center',
                   gap: '10px',
                   padding: '10px 0',
-                  borderBottom: i < 3 ? '1px solid rgba(212,175,55,0.06)' : 'none',
+                  borderBottom: i < badges.length - 1 ? '1px solid rgba(212,175,55,0.06)' : 'none',
                 }}
               >
                 <div
@@ -636,7 +636,7 @@ export default function GrandFoyerHero({ locale, dict }: GrandFoyerHeroProps) {
                   {badge}
                 </span>
               </div>
-            ))}
+            )); })()}
           </div>
         </div>
 

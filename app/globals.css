@@ -82,10 +82,15 @@
   html,
   body {
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
-  /* RTL support */
+  /*
+   * Legacy RTL fallbacks — prefer Tailwind logical utilities in components:
+   *   ms-auto (margin-inline-start), me-auto (margin-inline-end),
+   *   text-start, text-end.
+   * These selectors remain for backward compatibility with existing markup.
+   */
   .rtl {
     direction: rtl;
     text-align: right;
@@ -108,6 +113,13 @@
   [dir="rtl"] .text-right {
     text-align: left;
   }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
 }
 
 @keyframes scroll-line-down {
@@ -123,6 +135,16 @@
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.4; }
   50% { opacity: 0.8; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @layer utilities {
@@ -202,11 +224,3 @@
   --font-sans: "Inter", system-ui, sans-serif;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground font-sans;
-  }
-}

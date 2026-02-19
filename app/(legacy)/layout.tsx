@@ -4,5 +4,5 @@ export default function LegacyLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="bg-white text-black">{children}</div>;
+  return <div className="bg-white text-black" data-theme="light">{children}</div>;
 }

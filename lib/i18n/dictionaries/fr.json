@@ -3,7 +3,8 @@
     "learn_more": "En savoir plus",
     "read_more": "Lire la suite",
     "back": "Retour",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "discover": "Découvrir"
   },
   "nav": {
     "home": "Accueil",
@@ -177,11 +178,11 @@
   },
   "privacy": {
     "title": "Politique de confidentialité",
-    "lastUpdated": "Dernière mise à jour : février 2026"
+    "lastUpdated": "Dernière mise à jour : {date}"
   },
   "terms": {
     "title": "Conditions d'utilisation",
-    "lastUpdated": "Dernière mise à jour : février 2026"
+    "lastUpdated": "Dernière mise à jour : {date}"
   },
   "footer": {
     "description": "Excellence chirurgicale et esthétique de renommée mondiale à Istanbul. Là où la science rencontre l'art.",

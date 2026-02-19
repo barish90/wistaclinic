@@ -30,7 +30,9 @@ export function ScrollSmootherWrapper({ children }: ScrollSmootherWrapperProps) 
     });
 
     return () => {
-      smoother.kill();
+      if (smoother && typeof smoother.kill === 'function') {
+        smoother.kill();
+      }
     };
   }, [gsapReady]);
 

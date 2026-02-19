@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import type { Locale } from '@/lib/i18n/config';
+import { notFound } from 'next/navigation';
+import { isValidLocale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/get-dictionary';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { SectionHeading } from '@/app/components/shared/SectionHeading';
@@ -13,12 +14,14 @@ interface ProceduresPageProps {
 
 export async function generateMetadata({ params }: ProceduresPageProps): Promise<Metadata> {
   const { locale } = await params;
-  return generatePageMetadata(locale as Locale, 'procedures', '/procedures');
+  if (!isValidLocale(locale)) return { title: 'Not Found' };
+  return generatePageMetadata(locale, 'procedures', '/procedures');
 }
 
 export default async function ProceduresPage({ params }: ProceduresPageProps) {
   const { locale } = await params;
-  const dict = await getDictionary(locale as Locale);
+  if (!isValidLocale(locale)) notFound();
+  const dict = await getDictionary(locale);
 
   return (
     <GsapProvider>

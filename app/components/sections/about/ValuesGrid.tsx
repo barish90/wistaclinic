@@ -2,14 +2,15 @@ import { Palette, Shield, Lightbulb, Heart } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
-const iconMap = {
-  Artistry: Palette,
-  Safety: Shield,
-  Innovation: Lightbulb,
-  Care: Heart,
+const iconMap: Record<string, typeof Palette> = {
+  artistry: Palette,
+  safety: Shield,
+  innovation: Lightbulb,
+  care: Heart,
 };
 
 interface Value {
+  id?: string;
   title: string;
   description: string;
 }
@@ -30,7 +31,7 @@ export function ValuesGrid({ title, values, className }: ValuesGridProps) {
 
         <div className="grid gap-8 sm:grid-cols-2 max-w-5xl mx-auto">
           {values.map((value) => {
-            const Icon = iconMap[value.title as keyof typeof iconMap] || Heart;
+            const Icon = (value.id ? iconMap[value.id] : undefined) || iconMap[value.title.toLowerCase()] || Heart;
 
             return (
               <Card

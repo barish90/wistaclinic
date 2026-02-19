@@ -44,7 +44,7 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
     return enDict;
   }
 
-  const loader = dictionaries[locale as keyof typeof dictionaries];
+  const loader = dictionaries[locale];
   if (!loader) {
     return enDict;
   }

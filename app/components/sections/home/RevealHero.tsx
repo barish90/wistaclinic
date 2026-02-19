@@ -133,6 +133,7 @@ export default function RevealHero({ locale, dict }: RevealHeroProps) {
         duration: 1.6,
         ease: 'doorSwing',
         onStart: () => {
+          if (blurTimeout) { clearTimeout(blurTimeout); blurTimeout = null; }
           if (doorLeftRef.current) doorLeftRef.current.style.filter = 'blur(3px)';
           if (doorRightRef.current) doorRightRef.current.style.filter = 'blur(3px)';
           blurTimeout = setTimeout(() => {

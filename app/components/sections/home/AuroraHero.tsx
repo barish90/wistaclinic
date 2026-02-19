@@ -203,7 +203,12 @@ export default function AuroraHero({ locale, dict }: AuroraHeroProps) {
         });
 
         // Border-radius morphing
-        const shapes = [...BORDER_SHAPES].sort(() => Math.random() - 0.5);
+        // Fisher-Yates shuffle — no hydration mismatch since this runs client-only
+        const shapes = [...BORDER_SHAPES];
+        for (let j = shapes.length - 1; j > 0; j--) {
+          const k = Math.floor(Math.random() * (j + 1));
+          [shapes[j], shapes[k]] = [shapes[k], shapes[j]];
+        }
         const morphTl = gsap.timeline({ repeat: -1 });
         shapes.forEach((shape) => {
           morphTl.to(blob, {

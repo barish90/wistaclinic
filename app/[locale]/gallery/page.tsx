@@ -20,7 +20,7 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
   const { locale } = await params;
   const dict = await getDictionary(locale as Locale);
 
-  const galleryDict = (dict as unknown as Record<string, Record<string, string> | undefined>)?.gallery;
+  const galleryDict = dict.gallery;
   const title = galleryDict?.title ?? 'Before & After Gallery';
   const subtitle = galleryDict?.subtitle ?? 'See the transformative results our patients have achieved through our world-class procedures.';
 

@@ -244,6 +244,10 @@ export default function CinematicJourneyHero({ locale, dict }: CinematicJourneyH
               if (svgPathRef.current && DrawSVGPlugin) {
                 const drawProgress = Math.max(0, Math.min(100, pp * 130));
                 gsap.set(svgPathRef.current, { drawSVG: `0% ${drawProgress}%` });
+              } else if (svgPathRef.current) {
+                // Fallback when DrawSVGPlugin is not available
+                const drawProgress = Math.max(0, Math.min(100, pp * 130));
+                svgPathRef.current.style.strokeDashoffset = String(2000 - (drawProgress / 100) * 2000);
               }
 
               // Phase 3 hidden

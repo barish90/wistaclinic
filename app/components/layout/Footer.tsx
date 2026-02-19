@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Instagram, Facebook, Twitter, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import { Logo } from '@/app/components/shared/Logo';
 import type { Dictionary } from '@/lib/i18n/get-dictionary';
 import type { Locale } from '@/lib/i18n/config';
 
@@ -11,13 +12,13 @@ interface FooterProps {
 
 export function Footer({ locale, dict }: FooterProps) {
   const navItems = [
-    { href: `/${locale}/`, label: dict.nav.home },
-    { href: `/${locale}/about`, label: dict.nav.about },
-    { href: `/${locale}/procedures`, label: dict.nav.procedures },
-    { href: `/${locale}/doctors`, label: dict.nav.doctors },
-    { href: `/${locale}/gallery`, label: (dict.nav as { gallery?: string }).gallery || 'Gallery' },
-    { href: `/${locale}/testimonials`, label: (dict.nav as { testimonials?: string }).testimonials || 'Testimonials' },
-    { href: `/${locale}/contact`, label: dict.nav.contact },
+    { href: `/${locale}/`, label: dict.nav.home || 'Home' },
+    { href: `/${locale}/about`, label: dict.nav.about || 'About' },
+    { href: `/${locale}/procedures`, label: dict.nav.procedures || 'Procedures' },
+    { href: `/${locale}/doctors`, label: dict.nav.doctors || 'Doctors' },
+    { href: `/${locale}/gallery`, label: dict.nav.gallery || 'Gallery' },
+    { href: `/${locale}/testimonials`, label: dict.nav.testimonials || 'Testimonials' },
+    { href: `/${locale}/contact`, label: dict.nav.contact || 'Contact' },
   ];
 
   const socialLinks = [
@@ -35,13 +36,8 @@ export function Footer({ locale, dict }: FooterProps) {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <Link href={`/${locale}/`} className="flex items-center gap-3 mb-4">
-              <div className="relative h-12 w-12 rounded-full bg-gradient-to-br from-bronze via-gold-500 to-gold-400 flex items-center justify-center shadow-md">
-                <span className="text-white font-serif text-2xl font-bold">W</span>
-              </div>
-              <span className="font-serif text-2xl font-semibold text-foreground">
-                WistaClinic
-              </span>
+            <Link href={`/${locale}/`} className="inline-block mb-4">
+              <Logo size="lg" />
             </Link>
             <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
               {dict.footer.description}

@@ -63,10 +63,8 @@ export default function BookingCTA({ locale, dict }: BookingCTAProps) {
       }
 
       // 2. Split text title animation
-      let splitInstance: { revert: () => void } | null = null;
       if (titleRef.current) {
         const split = new SplitText(titleRef.current, { type: 'chars' });
-        splitInstance = split;
         gsap.set(split.chars, { yPercent: 100, opacity: 0 });
         timeline.to(split.chars, {
           yPercent: 0,
@@ -112,7 +110,6 @@ export default function BookingCTA({ locale, dict }: BookingCTAProps) {
     return () => {
       ctx.revert();
     };
-    // Note: splitInstance is reverted by ctx.revert() since it's created within gsap.context
   }, [gsapReady]);
 
   const trustItems = dict.home?.cta?.trust || [

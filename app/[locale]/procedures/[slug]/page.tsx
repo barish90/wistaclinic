@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import type { Locale } from '@/lib/i18n/config';
+import { isValidLocale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/get-dictionary';
 import { getProcedureBySlug } from '@/lib/data/procedures';
 import { GsapProvider } from '@/app/components/shared/GsapProvider';
@@ -16,10 +16,11 @@ interface ProcedureDetailPageProps {
 
 export async function generateMetadata({ params }: ProcedureDetailPageProps): Promise<Metadata> {
   const { locale, slug } = await params;
+  if (!isValidLocale(locale)) return { title: 'Not Found' };
   const procedure = getProcedureBySlug(slug);
   if (!procedure) return { title: 'Not Found' };
 
-  const dict = await getDictionary(locale as Locale);
+  const dict = await getDictionary(locale);
   const siteTitle = dict.seo?.home?.title || 'WistaClinic';
 
   return {
@@ -32,13 +33,16 @@ export default async function ProcedureDetailPage({
   params,
 }: ProcedureDetailPageProps) {
   const { locale, slug } = await params;
-  const dict = await getDictionary(locale as Locale);
+  if (!isValidLocale(locale)) notFound();
+  const dict = await getDictionary(locale);
 
   const procedure = getProcedureBySlug(slug);
 
   if (!procedure) {
     notFound();
   }
+
+  const detail = (dict?.procedures?.detail ?? {}) as Record<string, string>;
 
   return (
     <GsapProvider>
@@ -62,9 +66,9 @@ export default async function ProcedureDetailPage({
         {/* CTA Section */}
         <AnimatedSection animation="fadeUp" delay={0.3}>
           <ProcedureCTA
-            title={dict.procedures.detail.ctaTitle}
-            description={dict.procedures.detail.ctaDescription}
-            buttonText={dict.procedures.detail.ctaButton}
+            title={detail.ctaTitle ?? 'Want to learn more?'}
+            description={detail.ctaDescription ?? 'Schedule a confidential consultation to discuss your goals and create a personalized treatment plan.'}
+            buttonText={detail.ctaButton ?? 'Book Consultation'}
             locale={locale}
           />
         </AnimatedSection>

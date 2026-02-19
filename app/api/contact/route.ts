@@ -12,7 +12,18 @@ const contactSchema = z.object({
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    let body: unknown;
+    try {
+      body = await request.json();
+    } catch (e) {
+      if (e instanceof SyntaxError) {
+        return NextResponse.json(
+          { success: false, errors: { _form: ['Invalid JSON in request body.'] } },
+          { status: 400 }
+        );
+      }
+      throw e;
+    }
 
     const result = contactSchema.safeParse(body);
 
@@ -34,7 +45,8 @@ export async function POST(request: Request) {
       success: true,
       message: 'Thank you for your message. We will contact you soon!',
     });
-  } catch {
+  } catch (error) {
+    console.error('Error in contact route:', error);
     return NextResponse.json(
       { success: false, errors: { _form: ['An unexpected error occurred. Please try again.'] } },
       { status: 500 }

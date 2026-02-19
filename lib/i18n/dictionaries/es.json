@@ -3,7 +3,8 @@
     "learn_more": "Más información",
     "read_more": "Leer más",
     "back": "Volver",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "discover": "Descubrir"
   },
   "nav": {
     "home": "Inicio",
@@ -177,11 +178,11 @@
   },
   "privacy": {
     "title": "Política de privacidad",
-    "lastUpdated": "Última actualización: febrero de 2026"
+    "lastUpdated": "Última actualización: {date}"
   },
   "terms": {
     "title": "Términos de servicio",
-    "lastUpdated": "Última actualización: febrero de 2026"
+    "lastUpdated": "Última actualización: {date}"
   },
   "footer": {
     "description": "Excelencia quirúrgica y estética de clase mundial en Istanbul. Donde la ciencia se encuentra con el arte.",

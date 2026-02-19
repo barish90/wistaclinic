@@ -9,6 +9,7 @@ import {
 import { cn } from '@/lib/utils';
 
 interface FAQ {
+  id?: string;
   question: string;
   answer: string;
 }
@@ -16,21 +17,22 @@ interface FAQ {
 interface ProcedureFAQProps {
   faqs: FAQ[];
   className?: string;
+  title?: string;
 }
 
-export function ProcedureFAQ({ faqs, className }: ProcedureFAQProps) {
+export function ProcedureFAQ({ faqs, className, title = 'Frequently Asked Questions' }: ProcedureFAQProps) {
   return (
     <section className={cn('py-20 sm:py-24', className)}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-serif text-3xl font-bold text-center text-foreground sm:text-4xl mb-12">
-            Frequently Asked Questions
+            {title}
           </h2>
 
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem
-                key={index}
+                key={faq.id ?? index}
                 value={`item-${index}`}
                 className="border border-bronze/20 rounded-lg px-6 bg-gradient-to-br from-background to-champagne/5"
               >

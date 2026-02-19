@@ -3,6 +3,8 @@
 import { useRef, useEffect, useState } from 'react';
 import { useGsap } from '@/app/hooks/useGsap';
 
+let gsapPluginsRegistered = false;
+
 /* ══════════════════════════════════════════════════════════════
    THE THREAD OF TRANSFORMATION
 
@@ -206,7 +208,10 @@ export default function ThreadHero({ locale, dict }: ThreadHeroProps) {
     const ST = (window as any).ScrollTrigger;
     const MorphSVG = (window as any).MorphSVGPlugin;
     if (!gsap || !ST || !MorphSVG) return;
-    gsap.registerPlugin(ST, MorphSVG);
+    if (!gsapPluginsRegistered) {
+      gsap.registerPlugin(ST, MorphSVG);
+      gsapPluginsRegistered = true;
+    }
     hasAnimated.current = true;
 
     const path = pathRef.current;

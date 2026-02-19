@@ -3,7 +3,8 @@
     "learn_more": "Daha Fazla Bilgi",
     "read_more": "Devamını Oku",
     "back": "Geri",
-    "loading": "Yükleniyor..."
+    "loading": "Yükleniyor...",
+    "discover": "Keşfet"
   },
   "nav": {
     "home": "Ana Sayfa",
@@ -189,11 +190,11 @@
   },
   "privacy": {
     "title": "Gizlilik Politikası",
-    "lastUpdated": "Son güncelleme: Şubat 2026"
+    "lastUpdated": "Son güncelleme: {date}"
   },
   "terms": {
     "title": "Hizmet Şartları",
-    "lastUpdated": "Son güncelleme: Şubat 2026"
+    "lastUpdated": "Son güncelleme: {date}"
   },
   "footer": {
     "description": "İstanbul'da dünya standartlarında cerrahi ve estetik mükemmellik. Bilim ve estetiğin buluştuğu nokta.",

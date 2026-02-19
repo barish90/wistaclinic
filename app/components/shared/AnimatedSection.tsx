@@ -86,6 +86,9 @@ export function AnimatedSection({
       return () => {
         st?.kill();
       };
+    } else {
+      // GSAP/ScrollTrigger not available — make element visible anyway
+      element.style.opacity = '1';
     }
   }, [gsapReady, animation, delay]);
 

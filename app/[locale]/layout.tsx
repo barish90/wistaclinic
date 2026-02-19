@@ -4,6 +4,7 @@ import { getDictionary } from '@/lib/i18n/get-dictionary';
 import { Header } from '@/app/components/layout/Header';
 import { Footer } from '@/app/components/layout/Footer';
 import { StructuredData } from '@/app/components/seo/StructuredData';
+import { SetDocumentLang } from '@/app/components/shared/SetDocumentLang';
 import type { Locale } from '@/lib/i18n/config';
 
 const rtlLocales = ['ar'] as const;
@@ -32,12 +33,7 @@ export default async function LocaleLayout({
 
   return (
     <div dir={dir} className={dir === 'rtl' ? 'rtl' : ''}>
-      {/* locale is validated above via isValidLocale() — safe to inline */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `document.documentElement.lang="${validLocale}";`,
-        }}
-      />
+      <SetDocumentLang lang={validLocale} />
       <StructuredData locale={validLocale} />
       <Header locale={validLocale} dict={dict} />
       <main className="min-h-screen pt-16 lg:pt-20">

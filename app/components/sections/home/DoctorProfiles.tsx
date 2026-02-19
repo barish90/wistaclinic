@@ -74,7 +74,8 @@ export default function DoctorProfiles({ locale, dict }: DoctorProfilesProps) {
 
       // Card reveal animations
       if (cardsRef.current) {
-        const cards = cardsRef.current.querySelectorAll('.doctor-card');
+        const cardsNode = cardsRef.current;
+        const cards = cardsNode.querySelectorAll('.doctor-card');
 
         gsap.set(cards, {
           clipPath: 'inset(0 0 100% 0)',
@@ -86,14 +87,14 @@ export default function DoctorProfiles({ locale, dict }: DoctorProfilesProps) {
           stagger: 0.15,
           ease: 'power3.inOut',
           scrollTrigger: {
-            trigger: cardsRef.current,
+            trigger: cardsNode,
             start: 'top 75%',
             toggleActions: 'play none none none',
           },
           onComplete: () => {
-            // After cards reveal, animate badges
-            const badges = cardsRef.current?.querySelectorAll('.credential-badge');
-            if (badges) {
+            // Snapshot cardsNode used instead of cardsRef.current to avoid stale ref after unmount
+            const badges = cardsNode.querySelectorAll('.credential-badge');
+            if (badges.length > 0) {
               gsap.from(badges, {
                 opacity: 0,
                 y: 10,

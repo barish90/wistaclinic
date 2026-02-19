@@ -1,5 +1,6 @@
 'use client'
 
+import Image from "next/image";
 import { Coffee, Droplets, Leaf } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -192,9 +193,12 @@ export default function CoffeeMenu() {
           className="text-center pt-16 pb-12 px-4"
         >
           <div className="inline-flex items-center justify-center mb-6">
-            <img
+            <Image
               src="/images/logo/wista-logo-gold.webp"
               alt="WistaClinic"
+              width={240}
+              height={128}
+              priority
               className="h-24 md:h-32 w-auto object-contain drop-shadow-lg"
             />
           </div>

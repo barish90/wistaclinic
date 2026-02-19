@@ -4,7 +4,7 @@ import { getDictionary } from '@/lib/i18n/get-dictionary';
 
 const baseUrl = 'https://wistaclinic.com';
 
-type SeoPage = 'home' | 'about' | 'procedures' | 'pricing' | 'doctors' | 'contact' | 'gallery' | 'testimonials' | 'privacy' | 'terms';
+export type SeoPage = 'home' | 'about' | 'procedures' | 'pricing' | 'doctors' | 'contact' | 'gallery' | 'testimonials' | 'privacy' | 'terms';
 
 export async function generatePageMetadata(
   locale: Locale,
@@ -12,7 +12,8 @@ export async function generatePageMetadata(
   path: string = '',
 ): Promise<Metadata> {
   const dict = await getDictionary(locale);
-  const seo = dict.seo?.[page as keyof typeof dict.seo] as { title: string; description: string } | undefined;
+  const seoSection = dict.seo as Partial<Record<SeoPage, { title: string; description: string }>> | undefined;
+  const seo = seoSection?.[page];
 
   const title = seo?.title || 'WistaClinic';
   const description = seo?.description || '';

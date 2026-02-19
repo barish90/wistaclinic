@@ -6,9 +6,17 @@ import { MapPin } from 'lucide-react';
 
 interface MapEmbedProps {
   className?: string;
+  loadingLabel?: string;
+  openInMapsLabel?: string;
+  mapTitle?: string;
 }
 
-export function MapEmbed({ className }: MapEmbedProps) {
+export function MapEmbed({
+  className,
+  loadingLabel = 'Loading map...',
+  openInMapsLabel = 'Open in Google Maps',
+  mapTitle = 'WistaClinic Location - Kagithane, Istanbul',
+}: MapEmbedProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -23,7 +31,7 @@ export function MapEmbed({ className }: MapEmbedProps) {
         <div className="absolute inset-0 bg-gradient-to-br from-bronze-light/20 via-champagne/30 to-bronze/10 animate-pulse flex items-center justify-center" aria-busy="true">
           <div className="flex flex-col items-center gap-2 text-muted-foreground">
             <MapPin className="h-8 w-8" />
-            <span className="text-sm">Loading map...</span>
+            <span className="text-sm">{loadingLabel}</span>
           </div>
         </div>
       )}
@@ -36,7 +44,7 @@ export function MapEmbed({ className }: MapEmbedProps) {
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="WistaClinic Location - Kagithane, Istanbul"
+        title={mapTitle}
         onLoad={() => setIsLoaded(true)}
         className={cn(
           'absolute inset-0 transition-opacity duration-500',
@@ -53,7 +61,7 @@ export function MapEmbed({ className }: MapEmbedProps) {
           className="flex items-center gap-2 text-white text-sm hover:underline"
         >
           <MapPin className="h-4 w-4" />
-          <span>Open in Google Maps</span>
+          <span>{openInMapsLabel}</span>
         </a>
       </div>
     </div>

@@ -7,12 +7,16 @@ interface BeforeAfterSliderProps {
   beforeGradient: string;
   afterGradient: string;
   className?: string;
+  beforeLabel?: string;
+  afterLabel?: string;
 }
 
 export function BeforeAfterSlider({
   beforeGradient,
   afterGradient,
   className,
+  beforeLabel = 'Before',
+  afterLabel = 'After',
 }: BeforeAfterSliderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -102,10 +106,10 @@ export function BeforeAfterSlider({
 
       {/* Labels */}
       <span className="absolute top-3 left-3 bg-black/60 text-white text-xs font-medium px-2 py-1 rounded pointer-events-none">
-        Before
+        {beforeLabel}
       </span>
       <span className="absolute top-3 right-3 bg-black/60 text-white text-xs font-medium px-2 py-1 rounded pointer-events-none">
-        After
+        {afterLabel}
       </span>
 
       {/* Slider handle */}

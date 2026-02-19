@@ -14,8 +14,8 @@ const ThreeScene = dynamic(() => Promise.resolve(ThreeSceneInner), {
   ssr: false,
 });
 
-/* ── Face data for canvas textures ── */
-const FACES = [
+/* ── Face data for canvas textures (defaults) ── */
+const DEFAULT_FACES = [
   {
     bg: '#2A2520',
     kicker: '',
@@ -48,7 +48,7 @@ const FACES = [
 
 /* ── Canvas texture generator ── */
 function createFaceTexture(
-  face: (typeof FACES)[number],
+  face: (typeof DEFAULT_FACES)[number],
   width: number,
   height: number,
   isFront: boolean
@@ -261,7 +261,7 @@ function ThreeSceneInner({
     /* ── Create face textures ── */
     const texResolution = 1024;
     const texHeight = 640;
-    const textures = FACES.map((face, i) => {
+    const textures = DEFAULT_FACES.map((face, i) => {
       const texCanvas = createFaceTexture(face, texResolution, texHeight, i === 0);
       const tex = new THREE.CanvasTexture(texCanvas);
       tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -400,8 +400,8 @@ function ThreeSceneInner({
   return null;
 }
 
-/* ── Phase labels ── */
-const PHASE_LABELS = ['Discover', 'Hair', 'Breast', 'Body', 'Begin'];
+/* ── Phase labels (defaults) ── */
+const DEFAULT_PHASE_LABELS = ['Discover', 'Hair', 'Breast', 'Body', 'Begin'];
 
 /* ── Main Component ── */
 export default function KineticPrismHero({
@@ -414,6 +414,13 @@ export default function KineticPrismHero({
   const [scrollProgress, setScrollProgress] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const hasAnimated = useRef(false);
+
+  // Build localized faces and labels from dict with fallbacks
+  const kpDict = dict?.home?.kineticPrism ?? {} as Record<string, any>;
+  const heroDict = dict?.home?.hero ?? {} as Record<string, string>;
+  const FACES = (kpDict.faces as typeof DEFAULT_FACES | undefined) ?? DEFAULT_FACES;
+  const PHASE_LABELS = (kpDict.phaseLabels as string[] | undefined) ?? DEFAULT_PHASE_LABELS;
+  const trustSignals = (kpDict.trustSignals as string[] | undefined) ?? ['Board Certified', '15+ Years', '10,000+ Patients'];
 
   const handleProgress = useCallback((p: number) => {
     setScrollProgress(p);
@@ -565,7 +572,7 @@ export default function KineticPrismHero({
             fontFamily: "'Cormorant Garamond', serif",
           }}
         >
-          Scroll to rotate
+          {heroDict.scrollLabel ?? 'Scroll to rotate'}
         </p>
         <div
           style={{
@@ -664,7 +671,7 @@ export default function KineticPrismHero({
             color: '#B8860B',
           }}
         >
-          Your Transformation Awaits
+          {heroDict.ctaKicker ?? 'Your Transformation Awaits'}
         </p>
         <h2
           className="mb-6"
@@ -677,7 +684,7 @@ export default function KineticPrismHero({
             letterSpacing: '0.04em',
           }}
         >
-          Begin Your Journey
+          {heroDict.ctaHeadline ?? 'Begin Your Journey'}
         </h2>
         <a
           href={`/${locale}/booking`}
@@ -694,7 +701,7 @@ export default function KineticPrismHero({
             transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
           }}
         >
-          <span className="relative z-10">Book Consultation</span>
+          <span className="relative z-10">{heroDict.ctaPrimary ?? 'Book Consultation'}</span>
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             style={{
@@ -704,7 +711,7 @@ export default function KineticPrismHero({
         </a>
 
         <div className="flex items-center gap-8 mt-8">
-          {['Board Certified', '15+ Years', '10,000+ Patients'].map(
+          {trustSignals.map(
             (signal, i) => (
               <span
                 key={i}

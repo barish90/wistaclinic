@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import type { Locale } from '@/lib/i18n/config';
+import { notFound } from 'next/navigation';
+import { isValidLocale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/get-dictionary';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { GsapProvider } from '@/app/components/shared/GsapProvider';
@@ -15,12 +16,14 @@ interface AboutPageProps {
 
 export async function generateMetadata({ params }: AboutPageProps): Promise<Metadata> {
   const { locale } = await params;
-  return generatePageMetadata(locale as Locale, 'about', '/about');
+  if (!isValidLocale(locale)) return { title: 'Not Found' };
+  return generatePageMetadata(locale, 'about', '/about');
 }
 
 export default async function AboutPage({ params }: AboutPageProps) {
   const { locale } = await params;
-  const dict = await getDictionary(locale as Locale);
+  if (!isValidLocale(locale)) notFound();
+  const dict = await getDictionary(locale);
 
   return (
     <GsapProvider>

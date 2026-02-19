@@ -23,6 +23,9 @@ interface TestimonialFilterProps {
   onFilterChange: (filter: string) => void;
   sortBy: SortOption;
   onSortChange: (sort: SortOption) => void;
+  allLabel?: string;
+  newestLabel?: string;
+  highestLabel?: string;
 }
 
 export function TestimonialFilter({
@@ -31,6 +34,9 @@ export function TestimonialFilter({
   onFilterChange,
   sortBy,
   onSortChange,
+  allLabel = 'All',
+  newestLabel = 'Newest First',
+  highestLabel = 'Highest Rated',
 }: TestimonialFilterProps) {
   return (
     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -46,7 +52,7 @@ export function TestimonialFilter({
               'bg-[#B8860B] text-white hover:bg-[#8B6508]'
           )}
         >
-          All
+          {allLabel}
         </Button>
         {procedures.map((proc) => (
           <Button
@@ -71,8 +77,8 @@ export function TestimonialFilter({
           <SelectValue placeholder="Sort by" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="newest">Newest First</SelectItem>
-          <SelectItem value="highest">Highest Rated</SelectItem>
+          <SelectItem value="newest">{newestLabel}</SelectItem>
+          <SelectItem value="highest">{highestLabel}</SelectItem>
         </SelectContent>
       </Select>
     </div>

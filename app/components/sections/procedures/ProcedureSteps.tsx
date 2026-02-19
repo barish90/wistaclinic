@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 
-interface Step {
+export interface Step {
   title: string;
   description: string;
 }

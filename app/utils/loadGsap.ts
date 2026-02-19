@@ -28,7 +28,18 @@ export async function loadGsap(): Promise<void> {
     return gsapPromise;
   }
 
-  if (window.gsap && window.ScrollTrigger && window.SplitText && window.MorphSVGPlugin && window.DrawSVGPlugin) {
+  const allPlugins = [
+    window.gsap,
+    window.ScrollTrigger,
+    window.ScrollToPlugin,
+    window.ScrollSmoother,
+    window.SplitText,
+    window.DrawSVGPlugin,
+    window.MorphSVGPlugin,
+    window.CustomEase,
+    window.Observer,
+  ];
+  if (allPlugins.every(Boolean)) {
     return Promise.resolve();
   }
 
@@ -100,12 +111,12 @@ export async function loadGsap(): Promise<void> {
 let confettiPromise: Promise<void> | null = null;
 
 export async function loadConfetti(): Promise<void> {
-  if (window.confetti) {
-    return Promise.resolve();
-  }
-
   if (confettiPromise) {
     return confettiPromise;
+  }
+
+  if (window.confetti) {
+    return Promise.resolve();
   }
 
   confettiPromise = (async () => {

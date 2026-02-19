@@ -80,6 +80,7 @@ export default {
       fontFamily: {
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        cormorant: ['var(--font-cormorant)', 'serif'],
       },
       keyframes: {
         shimmer: {

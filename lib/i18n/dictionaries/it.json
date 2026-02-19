@@ -3,7 +3,8 @@
     "learn_more": "Scopri di più",
     "read_more": "Leggi di più",
     "back": "Indietro",
-    "loading": "Caricamento..."
+    "loading": "Caricamento...",
+    "discover": "Scopri"
   },
   "nav": {
     "home": "Home",
@@ -177,11 +178,11 @@
   },
   "privacy": {
     "title": "Informativa sulla privacy",
-    "lastUpdated": "Ultimo aggiornamento: febbraio 2026"
+    "lastUpdated": "Ultimo aggiornamento: {date}"
   },
   "terms": {
     "title": "Termini di servizio",
-    "lastUpdated": "Ultimo aggiornamento: febbraio 2026"
+    "lastUpdated": "Ultimo aggiornamento: {date}"
   },
   "footer": {
     "description": "Eccellenza chirurgica ed estetica di livello mondiale a Istanbul. Dove la scienza incontra l'arte.",

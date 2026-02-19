@@ -1,19 +1,18 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import { useSyncExternalStore } from 'react';
 import { Button } from '@/components/ui/button';
-
-const emptySubscribe = () => () => {};
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
-  const mounted = useSyncExternalStore(
-    emptySubscribe,
-    () => true,
-    () => false
-  );
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
     return (
@@ -31,11 +30,21 @@ export function ThemeToggle() {
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       aria-label="Toggle theme"
     >
-      {resolvedTheme === 'dark' ? (
-        <Sun className="h-4 w-4 text-foreground" />
-      ) : (
-        <Moon className="h-4 w-4 text-foreground" />
-      )}
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.span
+          key={resolvedTheme}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.15 }}
+        >
+          {resolvedTheme === 'dark' ? (
+            <Sun className="h-4 w-4 text-foreground" />
+          ) : (
+            <Moon className="h-4 w-4 text-foreground" />
+          )}
+        </motion.span>
+      </AnimatePresence>
     </Button>
   );
 }

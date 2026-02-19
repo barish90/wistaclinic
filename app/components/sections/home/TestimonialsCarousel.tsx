@@ -129,10 +129,10 @@ export default function TestimonialsCarousel({ dict }: TestimonialsCarouselProps
           ref={titleRef}
           className="font-serif text-3xl md:text-4xl lg:text-5xl text-center text-warm-gray-900 mb-4"
         >
-          {dict.home.testimonialsSection.title}
+          {dict?.home?.testimonialsSection?.title ?? 'Patient Stories'}
         </h2>
         <p className="font-sans text-center text-warm-gray-600 text-lg max-w-2xl mx-auto">
-          {dict.home.testimonialsSection.subtitle}
+          {dict?.home?.testimonialsSection?.subtitle ?? ''}
         </p>
       </div>
 

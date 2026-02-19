@@ -151,8 +151,18 @@ export default function GoldenThreadHero({ locale, dict }: GoldenThreadHeroProps
     if (!thread) return;
 
     // Set initial DrawSVG state
-    gsap.set(thread, { drawSVG: '0%' });
-    if (glow) gsap.set(glow, { drawSVG: '0%' });
+    if (DrawSVGPlugin) {
+      gsap.set(thread, { drawSVG: '0%' });
+      if (glow) gsap.set(glow, { drawSVG: '0%' });
+    } else {
+      // Fallback when DrawSVGPlugin is not available
+      thread.style.strokeDasharray = '2000';
+      thread.style.strokeDashoffset = '2000';
+      if (glow) {
+        glow.style.strokeDasharray = '2000';
+        glow.style.strokeDashoffset = '2000';
+      }
+    }
 
     /* ── Kicker entrance on load ── */
     gsap.fromTo(kickerRef.current,

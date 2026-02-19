@@ -19,6 +19,10 @@ export function LocaleSwitcher({ currentLocale }: LocaleSwitcherProps) {
   const router = useRouter();
   const pathname = usePathname();
 
+  // Routes follow the pattern "/{locale}/..." (e.g., "/en/about").
+  // This replaces the locale segment (segments[1]) with the new locale.
+  // The locales.includes() guard protects against invalid values.
+  // Edge case: root "/" would produce ["", ""] — segments[1] is still replaced correctly.
   const handleLocaleChange = (newLocale: string) => {
     if (!locales.includes(newLocale as Locale)) return;
     const segments = pathname.split('/');

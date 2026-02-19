@@ -35,8 +35,8 @@ export function Header({ locale, dict }: HeaderProps) {
     { href: `/${locale}/about`, label: dict.nav.about },
     { href: `/${locale}/procedures`, label: dict.nav.procedures },
     { href: `/${locale}/doctors`, label: dict.nav.doctors },
-    { href: `/${locale}/gallery`, label: (dict.nav as { gallery?: string }).gallery || 'Gallery' },
-    { href: `/${locale}/testimonials`, label: (dict.nav as { testimonials?: string }).testimonials || 'Testimonials' },
+    { href: `/${locale}/gallery`, label: dict.nav.gallery || 'Gallery' },
+    { href: `/${locale}/testimonials`, label: dict.nav.testimonials || 'Testimonials' },
     { href: `/${locale}/contact`, label: dict.nav.contact },
   ];
 

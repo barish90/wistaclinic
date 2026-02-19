@@ -9,6 +9,7 @@ interface ProcedureCardProps {
   shortDescription: string;
   locale: string;
   className?: string;
+  learnMoreLabel?: string;
 }
 
 export function ProcedureCard({
@@ -17,6 +18,7 @@ export function ProcedureCard({
   shortDescription,
   locale,
   className,
+  learnMoreLabel = 'Learn More',
 }: ProcedureCardProps) {
   return (
     <Link href={`/${locale}/procedures/${slug}`}>
@@ -46,7 +48,7 @@ export function ProcedureCard({
 
             {/* Read more link */}
             <div className="flex items-center gap-2 text-bronze-deep font-medium group-hover:gap-3 transition-all duration-300">
-              <span>Learn More</span>
+              <span>{learnMoreLabel}</span>
               <ArrowRight className="w-4 h-4" />
             </div>
           </div>

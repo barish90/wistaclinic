@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import type { Locale } from '@/lib/i18n/config';
+import { notFound } from 'next/navigation';
+import { isValidLocale } from '@/lib/i18n/config';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 
 interface TermsPageProps {
@@ -8,11 +9,13 @@ interface TermsPageProps {
 
 export async function generateMetadata({ params }: TermsPageProps): Promise<Metadata> {
   const { locale } = await params;
-  return generatePageMetadata(locale as Locale, 'terms', '/terms');
+  if (!isValidLocale(locale)) return { title: 'Not Found' };
+  return generatePageMetadata(locale, 'terms', '/terms');
 }
 
 export default async function TermsPage({ params }: TermsPageProps) {
-  await params;
+  const { locale } = await params;
+  if (!isValidLocale(locale)) notFound();
 
   return (
     <div className="min-h-screen bg-background text-foreground">

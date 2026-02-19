@@ -9,9 +9,11 @@ interface ResultsShowcaseProps {
   locale: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dict: any;
+  beforeLabel?: string;
+  afterLabel?: string;
 }
 
-export default function ResultsShowcase({ locale, dict }: ResultsShowcaseProps) {
+export default function ResultsShowcase({ locale, dict, beforeLabel = 'Before', afterLabel = 'After' }: ResultsShowcaseProps) {
   const { gsapReady } = useGsap();
   const sectionRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -202,7 +204,7 @@ export default function ResultsShowcase({ locale, dict }: ResultsShowcaseProps) 
                   >
                     <div className="absolute top-4 left-4">
                       <span className="font-sans text-xs uppercase tracking-wider text-white text-shadow-lg">
-                        Before
+                        {beforeLabel}
                       </span>
                     </div>
                   </div>
@@ -217,7 +219,7 @@ export default function ResultsShowcase({ locale, dict }: ResultsShowcaseProps) 
                   >
                     <div className="absolute top-4 right-4">
                       <span className="font-sans text-xs uppercase tracking-wider text-white text-shadow-lg">
-                        After
+                        {afterLabel}
                       </span>
                     </div>
                   </div>

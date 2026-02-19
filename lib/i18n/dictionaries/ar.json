@@ -3,7 +3,8 @@
     "learn_more": "اعرف المزيد",
     "read_more": "اقرأ المزيد",
     "back": "رجوع",
-    "loading": "جارٍ التحميل..."
+    "loading": "جارٍ التحميل...",
+    "discover": "اكتشف"
   },
   "nav": {
     "home": "الرئيسية",
@@ -177,11 +178,11 @@
   },
   "privacy": {
     "title": "سياسة الخصوصية",
-    "lastUpdated": "آخر تحديث: فبراير 2026"
+    "lastUpdated": "آخر تحديث: {date}"
   },
   "terms": {
     "title": "شروط الخدمة",
-    "lastUpdated": "آخر تحديث: فبراير 2026"
+    "lastUpdated": "آخر تحديث: {date}"
   },
   "footer": {
     "description": "تميّز جراحي وتجميلي عالمي المستوى في Istanbul. حيث يلتقي العلم بالفن.",

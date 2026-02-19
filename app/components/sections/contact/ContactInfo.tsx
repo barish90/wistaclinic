@@ -14,10 +14,12 @@ interface ContactInfoProps {
 }
 
 export function ContactInfo({ info, className }: ContactInfoProps) {
+  const sanitizedPhone = info.phone.replace(/[^\d+]/g, '').replace(/(?!^\+)\+/g, '');
+
   const contactItems = [
     { icon: MapPin, label: 'Address', value: info.address },
-    { icon: Phone, label: 'Phone', value: info.phone },
-    { icon: Mail, label: 'Email', value: info.email },
+    { icon: Phone, label: 'Phone', value: info.phone, href: `tel:${sanitizedPhone}` },
+    { icon: Mail, label: 'Email', value: info.email, href: `mailto:${info.email}` },
     { icon: Clock, label: 'Hours', value: info.hours },
   ];
 
@@ -33,7 +35,16 @@ export function ContactInfo({ info, className }: ContactInfoProps) {
               </div>
               <div>
                 <p className="font-semibold text-foreground mb-1">{item.label}</p>
-                <p className="text-muted-foreground">{item.value}</p>
+                {item.href ? (
+                  <a
+                    href={item.href}
+                    className="text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    {item.value}
+                  </a>
+                ) : (
+                  <p className="text-muted-foreground">{item.value}</p>
+                )}
               </div>
             </div>
           );

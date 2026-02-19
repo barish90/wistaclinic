@@ -3,6 +3,7 @@ import type { Locale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/get-dictionary';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { GsapProvider } from '@/app/components/shared/GsapProvider';
+import { SectionReveal } from '@/app/components/shared/SectionReveal';
 import {
   ThreadHero,
   ServicesGrid,
@@ -29,12 +30,24 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <GsapProvider>
       <ThreadHero locale={locale} dict={dict} />
-      <ServicesGrid locale={locale} dict={dict} />
-      <PatientJourney dict={dict} />
-      <DoctorProfiles locale={locale} dict={dict} />
-      <ResultsShowcase locale={locale} dict={dict} />
-      <TestimonialsCarousel dict={dict} />
-      <BookingCTA locale={locale} dict={dict} />
+      <SectionReveal>
+        <ServicesGrid locale={locale} dict={dict} />
+      </SectionReveal>
+      <SectionReveal>
+        <PatientJourney dict={dict} />
+      </SectionReveal>
+      <SectionReveal>
+        <DoctorProfiles locale={locale} dict={dict} />
+      </SectionReveal>
+      <SectionReveal>
+        <ResultsShowcase locale={locale} dict={dict} />
+      </SectionReveal>
+      <SectionReveal>
+        <TestimonialsCarousel dict={dict} />
+      </SectionReveal>
+      <SectionReveal>
+        <BookingCTA locale={locale} dict={dict} />
+      </SectionReveal>
     </GsapProvider>
   );
 }

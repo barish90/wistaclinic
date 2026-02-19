@@ -3,7 +3,8 @@
     "learn_more": "了解更多",
     "read_more": "阅读更多",
     "back": "返回",
-    "loading": "加载中..."
+    "loading": "加载中...",
+    "discover": "探索"
   },
   "nav": {
     "home": "首页",
@@ -177,11 +178,11 @@
   },
   "privacy": {
     "title": "隐私政策",
-    "lastUpdated": "最后更新：2026年2月"
+    "lastUpdated": "最后更新：{date}"
   },
   "terms": {
     "title": "服务条款",
-    "lastUpdated": "最后更新：2026年2月"
+    "lastUpdated": "最后更新：{date}"
   },
   "footer": {
     "description": "Istanbul 世界级外科与医学美容卓越中心。科学与艺术的完美融合。",

@@ -548,7 +548,7 @@ export default function ImmersiveHero({ locale, dict }: ImmersiveHeroProps) {
     return () => ctx.revert();
   }, [gsapReady]);
 
-  const h = dict.home.hero;
+  const h = dict?.home?.hero ?? {} as Record<string, any>;
 
   return (
     <section

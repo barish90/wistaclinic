@@ -4,9 +4,27 @@ import { useRef, useEffect, useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { useGsap } from '@/app/hooks/useGsap';
 
+interface GlassLayersDict {
+  home?: {
+    hero?: {
+      kicker?: string;
+      clinicName?: string;
+      scrollLabel?: string;
+      ctaKicker?: string;
+      ctaHeadline?: string;
+      ctaPrimary?: string;
+    };
+    glassLayers?: {
+      subtitle?: string;
+      phases?: Array<{ kicker: string; title: string; description: string }>;
+      trustSignals?: string[];
+    };
+  };
+}
+
 interface GlassLayersHeroProps {
   locale: string;
-  dict: any;
+  dict: GlassLayersDict;
 }
 
 /* ── Three.js Scene (loaded dynamically, SSR disabled) ── */
@@ -371,7 +389,36 @@ function ThreeSceneInner({
     return () => {
       cancelAnimationFrame(frameRef.current);
       window.removeEventListener('resize', onResize);
+
+      // Dispose plane groups (glass, borders, glow)
+      planes.forEach((p) => {
+        // Glass plane
+        p.group.children.forEach((child: any) => {
+          if (child.geometry) child.geometry.dispose();
+          if (child.material) {
+            if (child.material.map) child.material.map.dispose();
+            child.material.dispose();
+          }
+        });
+        scene.remove(p.group);
+      });
+
+      // Dispose burst particles
+      bursts.forEach((b) => {
+        b.geo.dispose();
+        b.mat.dispose();
+        scene.remove(b.points);
+      });
+
+      // Dispose ambient particles
+      if (particlesRef.current) {
+        particlesRef.current.geometry.dispose();
+        (particlesRef.current.material as any).dispose();
+        scene.remove(particlesRef.current);
+      }
+
       renderer.dispose();
+      renderer.forceContextLoss();
     };
   }, [canvasRef]);
 
@@ -442,8 +489,8 @@ function ThreeSceneInner({
   return null;
 }
 
-/* ── Phase content data ── */
-const PHASES = [
+/* ── Phase content data (fallback defaults) ── */
+const DEFAULT_PHASES = [
   {
     kicker: 'THE SURFACE',
     title: 'Hair Restoration',
@@ -468,6 +515,12 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const hasAnimated = useRef(false);
+
+  // Build localized phases from dict with fallbacks
+  const glDict = dict?.home?.glassLayers ?? {};
+  const phases = (glDict.phases as { kicker: string; title: string; description: string }[] | undefined) ?? DEFAULT_PHASES;
+  const trustSignals = (glDict.trustSignals as string[] | undefined) ?? ['Board Certified', '15+ Years', '10,000+ Patients'];
+  const heroDict = dict?.home?.hero ?? {};
 
   const handleProgress = useCallback((p: number) => {
     setScrollProgress(p);
@@ -579,7 +632,7 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
             color: '#B8860B',
           }}
         >
-          Istanbul&apos;s Premier Destination
+          {heroDict.kicker ?? 'Istanbul\u2019s Premier Destination'}
         </p>
         <h1
           style={{
@@ -593,7 +646,7 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
             textShadow: '0 2px 30px rgba(212,175,55,0.15)',
           }}
         >
-          WISTA CLINIC
+          {heroDict.clinicName ?? 'WISTA CLINIC'}
         </h1>
         <p
           className="mt-6"
@@ -606,7 +659,7 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
             textTransform: 'uppercase',
           }}
         >
-          Three Layers of Transformation
+          {glDict.subtitle ?? 'Three Layers of Transformation'}
         </p>
 
         {/* Scroll indicator */}
@@ -622,7 +675,7 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
               color: 'rgba(255,248,231,0.3)',
             }}
           >
-            Scroll to explore
+            {heroDict.scrollLabel ?? 'Scroll to explore'}
           </p>
           <div
             className="w-[1px] h-8"
@@ -635,7 +688,7 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
       </div>
 
       {/* ── Phases 1–3: Services ── */}
-      {PHASES.map((phase, i) => (
+      {phases.map((phase, i) => (
         <div
           key={i}
           className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
@@ -705,7 +758,7 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
             color: '#B8860B',
           }}
         >
-          Your Journey Begins
+          {heroDict.ctaKicker ?? 'Your Journey Begins'}
         </p>
         <h2
           className="mb-8"
@@ -717,11 +770,10 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
             letterSpacing: '0.06em',
             textAlign: 'center',
             lineHeight: 1.2,
+            whiteSpace: 'pre-line',
           }}
         >
-          Begin Your
-          <br />
-          Transformation
+          {heroDict.ctaHeadline ?? 'Begin Your\nTransformation'}
         </h2>
 
         <a
@@ -739,7 +791,7 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
             transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
           }}
         >
-          <span className="relative z-10">Book Consultation</span>
+          <span className="relative z-10">{heroDict.ctaPrimary ?? 'Book Consultation'}</span>
           <div
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             style={{
@@ -750,7 +802,7 @@ export default function GlassLayersHero({ locale, dict }: GlassLayersHeroProps) 
 
         {/* Trust signals */}
         <div className="flex items-center gap-8 mt-10">
-          {['Board Certified', '15+ Years', '10,000+ Patients'].map(
+          {trustSignals.map(
             (signal, i) => (
               <span
                 key={i}

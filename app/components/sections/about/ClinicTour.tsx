@@ -1,20 +1,22 @@
 import { cn } from '@/lib/utils';
 
+const DEFAULT_TOUR_AREAS = [
+  'Reception & Lounge',
+  'Consultation Suites',
+  'Surgical Theater',
+  'Recovery Rooms',
+  'VIP Suites',
+  'Medical Laboratory',
+];
+
 interface ClinicTourProps {
   title: string;
   description: string;
+  tourAreas?: string[];
   className?: string;
 }
 
-export function ClinicTour({ title, description, className }: ClinicTourProps) {
-  const tourAreas = [
-    'Reception & Lounge',
-    'Consultation Suites',
-    'Surgical Theater',
-    'Recovery Rooms',
-    'VIP Suites',
-    'Medical Laboratory',
-  ];
+export function ClinicTour({ title, description, tourAreas = DEFAULT_TOUR_AREAS, className }: ClinicTourProps) {
 
   return (
     <section className={cn('py-20 sm:py-24 bg-gradient-to-b from-champagne/5 to-background', className)}>

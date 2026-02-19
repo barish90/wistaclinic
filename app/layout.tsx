@@ -33,8 +33,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Default lang="en" for non-locale pages (legacy routes).
+  // Locale-specific routes override this via SetDocumentLang in app/[locale]/layout.tsx.
   return (
-    <html suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${playfair.variable} ${inter.variable} ${cormorant.variable} antialiased`}
       >

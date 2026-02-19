@@ -121,7 +121,8 @@ export default function NewYearOfferPage() {
                     key={dept.id}
                     className="department-panel relative md:sticky md:top-0 w-full min-h-screen md:h-screen flex items-center justify-center"
                     style={{
-                        zIndex: 30 + index
+                        zIndex: 30 + index,
+                        willChange: 'transform',
                     }}
                 >
                     <div className="w-full h-full p-0 md:p-6 lg:p-8 bg-transparent">

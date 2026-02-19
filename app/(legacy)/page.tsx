@@ -18,13 +18,6 @@ const poppins = Poppins({
 export default function HomePage() {
   return (
     <>
-      <style jsx global>{`
-        .wista-logo-text {
-          font-weight: 700;
-          font-style: italic;
-        }
-      `}</style>
-
       <div className={`min-h-screen bg-white ${poppins.className}`}>
         {/* Header */}
         <header className="bg-white border-b border-gray-100">

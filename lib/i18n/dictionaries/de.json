@@ -3,7 +3,8 @@
     "learn_more": "Mehr erfahren",
     "read_more": "Weiterlesen",
     "back": "Zurück",
-    "loading": "Wird geladen..."
+    "loading": "Wird geladen...",
+    "discover": "Entdecken"
   },
   "nav": {
     "home": "Startseite",
@@ -189,11 +190,11 @@
   },
   "privacy": {
     "title": "Datenschutzerklärung",
-    "lastUpdated": "Zuletzt aktualisiert: Februar 2026"
+    "lastUpdated": "Zuletzt aktualisiert: {date}"
   },
   "terms": {
     "title": "Nutzungsbedingungen",
-    "lastUpdated": "Zuletzt aktualisiert: Februar 2026"
+    "lastUpdated": "Zuletzt aktualisiert: {date}"
   },
   "footer": {
     "description": "Erstklassige chirurgische und ästhetische Exzellenz in Istanbul. Wo Wissenschaft auf Ästhetik trifft.",

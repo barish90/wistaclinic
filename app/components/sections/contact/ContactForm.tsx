@@ -1,6 +1,9 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -25,9 +28,16 @@ interface FormLabels {
   message: string;
   messagePlaceholder: string;
   submit: string;
+  submitting?: string;
   successTitle?: string;
   successMessage?: string;
   successButton?: string;
+  errorMessages?: {
+    nameMin?: string;
+    emailInvalid?: string;
+    phoneMin?: string;
+    messageMin?: string;
+  };
 }
 
 interface ContactFormProps {
@@ -37,32 +47,74 @@ interface ContactFormProps {
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-interface FieldErrors {
-  name?: string[];
-  email?: string[];
-  phone?: string[];
-  message?: string[];
-  _form?: string[];
-}
+const STORAGE_KEY = 'wista_contact_form';
 
 export function ContactForm({ labels, className }: ContactFormProps) {
+  const contactFormSchema = z.object({
+    name: z.string().min(2, labels.errorMessages?.nameMin ?? 'Name must be at least 2 characters'),
+    email: z.string().email(labels.errorMessages?.emailInvalid ?? 'Invalid email address'),
+    phone: z.string().min(5, labels.errorMessages?.phoneMin ?? 'Phone number is required'),
+    procedure: z.string().optional(),
+    message: z.string().min(10, labels.errorMessages?.messageMin ?? 'Message must be at least 10 characters'),
+    honeypot: z.string().max(0, 'Bot detected').optional(),
+  });
+
+  type ContactFormValues = z.infer<typeof contactFormSchema>;
   const [status, setStatus] = useState<FormStatus>('idle');
-  const [errors, setErrors] = useState<FieldErrors>({});
+  const [formError, setFormError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+    setError,
+    reset,
+    watch,
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      procedure: '',
+      message: '',
+      honeypot: '',
+    },
+  });
+
+  // Restore saved form values from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved) as Partial<ContactFormValues>;
+        reset({
+          name: parsed.name || '',
+          email: parsed.email || '',
+          phone: parsed.phone || '',
+          procedure: parsed.procedure || '',
+          message: parsed.message || '',
+          honeypot: '',
+        });
+      }
+    } catch { /* localStorage unavailable or corrupted */ }
+  }, [reset]);
+
+  // Persist form values to localStorage on change
+  useEffect(() => {
+    const subscription = watch((values) => {
+      try {
+        const { honeypot: _, ...saveable } = values;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(saveable));
+      } catch { /* quota or private mode */ }
+    });
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
+  const onSubmit = async (data: ContactFormValues) => {
     setStatus('submitting');
-    setErrors({});
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-      phone: formData.get('phone') as string,
-      procedure: formData.get('procedure') as string,
-      message: formData.get('message') as string,
-      honeypot: formData.get('_hp') as string,
-    };
+    setFormError(null);
 
     try {
       const response = await fetch('/api/contact', {
@@ -71,19 +123,41 @@ export function ContactForm({ labels, className }: ContactFormProps) {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      let result;
+      try {
+        result = await response.json();
+      } catch {
+        setStatus('error');
+        setFormError('Something went wrong. Please try again.');
+        return;
+      }
 
       if (!response.ok || !result.success) {
         setStatus('error');
-        setErrors(result.errors || { _form: ['Something went wrong. Please try again.'] });
+        const serverErrors = result.errors as Record<string, string[]> | undefined;
+        if (serverErrors) {
+          for (const [field, messages] of Object.entries(serverErrors)) {
+            if (field === '_form') {
+              setFormError(messages[0]);
+            } else if (field in contactFormSchema.shape) {
+              setError(field as keyof ContactFormValues, {
+                type: 'server',
+                message: messages[0],
+              });
+            }
+          }
+        } else {
+          setFormError('Something went wrong. Please try again.');
+        }
         return;
       }
 
       setStatus('success');
-      (e.target as HTMLFormElement).reset();
+      reset();
+      try { localStorage.removeItem(STORAGE_KEY); } catch { /* noop */ }
     } catch {
       setStatus('error');
-      setErrors({ _form: ['Network error. Please check your connection and try again.'] });
+      setFormError('Network error. Please check your connection and try again.');
     }
   };
 
@@ -108,18 +182,18 @@ export function ContactForm({ labels, className }: ContactFormProps) {
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className={cn('space-y-6 bg-card rounded-xl p-8 border border-bronze/20', className)}
     >
       {/* Honeypot - hidden from users */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
-        <input type="text" name="_hp" tabIndex={-1} autoComplete="off" />
+        <input type="text" tabIndex={-1} autoComplete="off" {...register('honeypot')} />
       </div>
 
-      {errors._form && (
+      {formError && (
         <div className="flex items-center gap-2 rounded-lg bg-destructive/10 p-4 text-sm text-destructive">
           <AlertCircle className="h-4 w-4 shrink-0" />
-          <span>{errors._form[0]}</span>
+          <span>{formError}</span>
         </div>
       )}
 
@@ -130,12 +204,11 @@ export function ContactForm({ labels, className }: ContactFormProps) {
         </Label>
         <Input
           id="name"
-          name="name"
           type="text"
-          required
           className={cn('border-bronze/20 focus:border-bronze', errors.name && 'border-destructive')}
+          {...register('name')}
         />
-        {errors.name && <p className="text-sm text-destructive">{errors.name[0]}</p>}
+        {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
       </div>
 
       {/* Email */}
@@ -145,12 +218,11 @@ export function ContactForm({ labels, className }: ContactFormProps) {
         </Label>
         <Input
           id="email"
-          name="email"
           type="email"
-          required
           className={cn('border-bronze/20 focus:border-bronze', errors.email && 'border-destructive')}
+          {...register('email')}
         />
-        {errors.email && <p className="text-sm text-destructive">{errors.email[0]}</p>}
+        {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
       </div>
 
       {/* Phone */}
@@ -160,12 +232,11 @@ export function ContactForm({ labels, className }: ContactFormProps) {
         </Label>
         <Input
           id="phone"
-          name="phone"
           type="tel"
-          required
           className={cn('border-bronze/20 focus:border-bronze', errors.phone && 'border-destructive')}
+          {...register('phone')}
         />
-        {errors.phone && <p className="text-sm text-destructive">{errors.phone[0]}</p>}
+        {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
       </div>
 
       {/* Procedure of Interest */}
@@ -173,18 +244,27 @@ export function ContactForm({ labels, className }: ContactFormProps) {
         <Label htmlFor="procedure" className="font-semibold">
           {labels.procedure}
         </Label>
-        <Select name="procedure">
-          <SelectTrigger className="border-bronze/20 focus:border-bronze">
-            <SelectValue placeholder={labels.selectProcedure} />
-          </SelectTrigger>
-          <SelectContent>
-            {procedures.map((procedure) => (
-              <SelectItem key={procedure.slug} value={procedure.slug}>
-                {procedure.title}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <Controller
+          name="procedure"
+          control={control}
+          render={({ field, fieldState }) => (
+            <>
+              <Select value={field.value} onValueChange={field.onChange}>
+                <SelectTrigger className="border-bronze/20 focus:border-bronze">
+                  <SelectValue placeholder={labels.selectProcedure} />
+                </SelectTrigger>
+                <SelectContent>
+                  {procedures.map((procedure) => (
+                    <SelectItem key={procedure.slug} value={procedure.slug}>
+                      {procedure.title}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              {fieldState.error && <p className="text-sm text-destructive">{fieldState.error.message}</p>}
+            </>
+          )}
+        />
       </div>
 
       {/* Message */}
@@ -194,13 +274,12 @@ export function ContactForm({ labels, className }: ContactFormProps) {
         </Label>
         <Textarea
           id="message"
-          name="message"
           rows={5}
-          required
           placeholder={labels.messagePlaceholder}
           className={cn('border-bronze/20 focus:border-bronze resize-none', errors.message && 'border-destructive')}
+          {...register('message')}
         />
-        {errors.message && <p className="text-sm text-destructive">{errors.message[0]}</p>}
+        {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
       </div>
 
       {/* Submit Button */}
@@ -212,7 +291,7 @@ export function ContactForm({ labels, className }: ContactFormProps) {
         {status === 'submitting' ? (
           <>
             <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-            Sending...
+            {labels.submitting ?? 'Sending...'}
           </>
         ) : (
           labels.submit

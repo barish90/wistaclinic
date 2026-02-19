@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import type { Locale } from '@/lib/i18n/config';
+import { isValidLocale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/get-dictionary';
+import { notFound } from 'next/navigation';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { GsapProvider } from '@/app/components/shared/GsapProvider';
 import { AnimatedSection } from '@/app/components/shared/AnimatedSection';
@@ -18,11 +20,11 @@ export async function generateMetadata({ params }: TestimonialsPageProps): Promi
 
 export default async function TestimonialsPage({ params }: TestimonialsPageProps) {
   const { locale } = await params;
-  const dict = await getDictionary(locale as Locale);
+  if (!isValidLocale(locale)) notFound();
+  const dict = await getDictionary(locale);
 
-  const testimonialsDict = (dict as unknown as Record<string, Record<string, string> | undefined>)?.testimonials;
-  const title = testimonialsDict?.title ?? 'What Our Patients Say';
-  const subtitle = testimonialsDict?.subtitle ??
+  const title = dict.testimonials?.title ?? 'What Our Patients Say';
+  const subtitle = dict.testimonials?.subtitle ??
     'Real stories from real patients who trusted us with their care. Every review is from a verified patient who traveled to Istanbul for their procedure.';
 
   return (
