@@ -80,6 +80,67 @@ if (process.env.NODE_ENV === 'development') {
 /* ── Grain texture data URI ── */
 const GRAIN_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
+/* ── Floating card subcomponent ── */
+function FloatingProcedureCard({ proc, index }: { proc: (typeof procedures)[number]; index: number }) {
+  const pathD = accentPaths[proc.slug] || '';
+  return (
+    <div
+      className="absolute inset-0 flex flex-col items-center justify-center"
+      style={{
+        background: 'linear-gradient(145deg, rgba(15,14,12,0.95), rgba(30,28,24,0.92))',
+        border: '1px solid rgba(184,134,11,0.15)',
+      }}
+    >
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ opacity: 0.06, mixBlendMode: 'overlay', backgroundImage: GRAIN_SVG }}
+      />
+      <span
+        className="absolute select-none"
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: '140px',
+          fontWeight: 300,
+          color: 'rgba(184,134,11,0.06)',
+          lineHeight: 1,
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
+      >
+        {String(index + 1).padStart(2, '0')}
+      </span>
+      <svg
+        viewBox="0 0 70 130"
+        style={{ width: '80px', height: 'auto', position: 'relative', zIndex: 2 }}
+      >
+        <path
+          d={pathD}
+          fill="none"
+          stroke="#B8860B"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{ filter: 'drop-shadow(0 0 12px rgba(184,134,11,0.25))' }}
+        />
+      </svg>
+      <span
+        className="uppercase mt-4 relative"
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: '10px',
+          fontWeight: 400,
+          color: 'rgba(184,134,11,0.6)',
+          letterSpacing: '0.3em',
+          zIndex: 2,
+        }}
+      >
+        {kickers[proc.slug] || ''}
+      </span>
+    </div>
+  );
+}
+
 export default function ServicesGrid({ locale, dict }: ServicesGridProps) {
   const { gsapReady } = useGsap();
   const sectionRef = useRef<HTMLElement>(null);
@@ -100,8 +161,16 @@ export default function ServicesGrid({ locale, dict }: ServicesGridProps) {
 
   useEffect(() => {
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const debouncedCheck = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 150);
+    };
+    window.addEventListener('resize', debouncedCheck);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', debouncedCheck);
+    };
   }, [checkMobile]);
 
   /* ══════════════════════════════════════════════════════════════
@@ -109,6 +178,9 @@ export default function ServicesGrid({ locale, dict }: ServicesGridProps) {
      ══════════════════════════════════════════════════════════════ */
   useEffect(() => {
     if (isMobile !== false || !hoveredSlug) return;
+
+    // Seed imgPos from current mouse so there's no jump
+    imgPos.current = { ...mousePos.current };
 
     const handleMouseMove = (e: MouseEvent) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
@@ -318,6 +390,9 @@ export default function ServicesGrid({ locale, dict }: ServicesGridProps) {
   /* ══════════════════════════════════════════════════════════════
      RENDER
      ══════════════════════════════════════════════════════════════ */
+  const activeIndex = procedures.findIndex(p => p.slug === hoveredSlug);
+  const activeProcedure = activeIndex !== -1 ? procedures[activeIndex] : null;
+
   return (
     <section ref={sectionRef} className="relative" style={{ backgroundColor: '#FAF7F2' }}>
       {/* Grain overlay */}
@@ -388,72 +463,9 @@ export default function ServicesGrid({ locale, dict }: ServicesGridProps) {
               transition: 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
-            {procedures.map((proc, i) => {
-              const pathD = accentPaths[proc.slug] || '';
-              return (
-                <div
-                  key={proc.slug}
-                  className="absolute inset-0 flex flex-col items-center justify-center"
-                  style={{
-                    opacity: hoveredSlug === proc.slug ? 1 : 0,
-                    transition: 'opacity 0.35s ease',
-                    background: 'linear-gradient(145deg, rgba(15,14,12,0.95), rgba(30,28,24,0.92))',
-                    border: '1px solid rgba(184,134,11,0.15)',
-                  }}
-                >
-                  {/* Grain */}
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{ opacity: 0.06, mixBlendMode: 'overlay', backgroundImage: GRAIN_SVG }}
-                  />
-                  {/* Watermark number */}
-                  <span
-                    className="absolute select-none"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontSize: '140px',
-                      fontWeight: 300,
-                      color: 'rgba(184,134,11,0.06)',
-                      lineHeight: 1,
-                      top: '50%',
-                      left: '50%',
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  {/* SVG accent art */}
-                  <svg
-                    viewBox="0 0 70 130"
-                    style={{ width: '80px', height: 'auto', position: 'relative', zIndex: 2 }}
-                  >
-                    <path
-                      d={pathD}
-                      fill="none"
-                      stroke="#B8860B"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      style={{ filter: 'drop-shadow(0 0 12px rgba(184,134,11,0.25))' }}
-                    />
-                  </svg>
-                  {/* Kicker label */}
-                  <span
-                    className="uppercase mt-4 relative"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontSize: '10px',
-                      fontWeight: 400,
-                      color: 'rgba(184,134,11,0.6)',
-                      letterSpacing: '0.3em',
-                      zIndex: 2,
-                    }}
-                  >
-                    {kickers[proc.slug] || ''}
-                  </span>
-                </div>
-              );
-            })}
+            {activeProcedure && (
+              <FloatingProcedureCard proc={activeProcedure} index={activeIndex} />
+            )}
           </div>
 
           {/* The list */}
@@ -744,7 +756,7 @@ export default function ServicesGrid({ locale, dict }: ServicesGridProps) {
           style={{ textDecoration: 'none' }}
         >
           <span
-            className="cta-btn inline-block"
+            className="inline-block transition-all duration-400 hover:!bg-[#B8860B] hover:!text-[#FAF7F2]"
             style={{
               padding: '18px 54px',
               border: '1px solid #B8860B',
@@ -762,15 +774,6 @@ export default function ServicesGrid({ locale, dict }: ServicesGridProps) {
         </Link>
       </div>
 
-      <style jsx>{`
-        .cta-btn {
-          transition: background 0.4s ease, color 0.4s ease;
-        }
-        .cta-btn:hover {
-          background: #B8860B !important;
-          color: #FAF7F2 !important;
-        }
-      `}</style>
     </section>
   );
 }

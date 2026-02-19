@@ -33,7 +33,7 @@ export function ClinicTour({ title, description, tourAreas = DEFAULT_TOUR_AREAS,
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {tourAreas.map((area, index) => (
             <div
-              key={area}
+              key={`${area}-${index}`}
               className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-bronze-light via-champagne to-bronze shadow-md hover:shadow-xl transition-all duration-500"
             >
               {/* Gradient overlay */}

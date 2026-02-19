@@ -8,9 +8,9 @@ interface LogoProps {
 }
 
 const sizeDimensions = {
-  sm: { width: 120, height: 32 },
+  sm: { width: 120, height: 36 },
   md: { width: 160, height: 48 },
-  lg: { width: 200, height: 56 },
+  lg: { width: 200, height: 60 },
 } as const;
 
 const sizeClasses = {

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { locales, type Locale } from '@/lib/i18n/config';
+import { locales, OG_LOCALE_MAP, type Locale } from '@/lib/i18n/config';
 import { getDictionary } from '@/lib/i18n/get-dictionary';
 
 const baseUrl = 'https://wistaclinic.com';
@@ -33,7 +33,7 @@ export async function generatePageMetadata(
       description,
       url,
       siteName: 'WistaClinic',
-      locale: ({ zh: 'zh_CN', ar: 'ar_SA', de: 'de_DE', fr: 'fr_FR', es: 'es_ES', it: 'it_IT', ru: 'ru_RU', tr: 'tr_TR', en: 'en_US' } as Record<string, string>)[locale] || locale,
+      locale: OG_LOCALE_MAP[locale] ?? locale,
       type: 'website',
     },
     twitter: {

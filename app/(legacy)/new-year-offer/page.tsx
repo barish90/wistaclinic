@@ -21,11 +21,17 @@ export default function NewYearOfferPage() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isReady, setIsReady] = useState(false)
   const [gsapLoaded, setGsapLoaded] = useState(false)
+  const [loadError, setLoadError] = useState(false)
 
   useEffect(() => {
     Promise.all([loadGsap(), loadConfetti()])
       .then(() => setGsapLoaded(true))
-      .catch(error => console.error('Failed to load animation libraries:', error))
+      .catch(error => {
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('[NewYearOffer] Failed to load animation libraries:', error);
+        }
+        setLoadError(true);
+      })
   }, [])
 
   useLayoutEffect(() => {
@@ -90,10 +96,27 @@ export default function NewYearOfferPage() {
     }
   }, [isReady, gsapLoaded])
 
+  if (loadError) {
+    return (
+      <div className="fixed inset-0 bg-white flex items-center justify-center" role="alert">
+        <div className="text-center px-6">
+          <p className="text-gray-700 font-serif text-xl mb-4">Unable to load animations</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-2 bg-gold-500 text-white rounded-lg hover:bg-gold-600 transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (!gsapLoaded || !isReady) {
     return (
-      <div className="fixed inset-0 bg-white flex items-center justify-center">
+      <div className="fixed inset-0 bg-white flex items-center justify-center" role="status" aria-live="polite" aria-busy="true">
         <div className="animate-pulse text-gold-500 font-serif text-2xl">
+          <span className="sr-only">Loading page content</span>
           {!gsapLoaded ? 'Loading animations...' : 'Loading...'}
         </div>
       </div>

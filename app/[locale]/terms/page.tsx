@@ -16,6 +16,9 @@ export async function generateMetadata({ params }: TermsPageProps): Promise<Meta
 export default async function TermsPage({ params }: TermsPageProps) {
   const { locale } = await params;
   if (!isValidLocale(locale)) notFound();
+  // Legal text is intentionally in English only — legal documents must remain
+  // in their original language for enforceability. Localized summaries may be
+  // added in the future alongside the authoritative English version.
 
   return (
     <div className="min-h-screen bg-background text-foreground">

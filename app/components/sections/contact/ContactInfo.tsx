@@ -14,7 +14,10 @@ interface ContactInfoProps {
 }
 
 export function ContactInfo({ info, className }: ContactInfoProps) {
-  const sanitizedPhone = info.phone.replace(/[^\d+]/g, '').replace(/(?!^\+)\+/g, '');
+  const digitsOnly = info.phone.replace(/[^\d+]/g, '');
+  const sanitizedPhone = digitsOnly.startsWith('+')
+    ? '+' + digitsOnly.slice(1).replace(/\+/g, '')
+    : digitsOnly.replace(/\+/g, '');
 
   const contactItems = [
     { icon: MapPin, label: 'Address', value: info.address },
@@ -38,6 +41,7 @@ export function ContactInfo({ info, className }: ContactInfoProps) {
                 {item.href ? (
                   <a
                     href={item.href}
+                    aria-label={`${item.label}: ${item.value}`}
                     className="text-muted-foreground transition-colors hover:text-primary"
                   >
                     {item.value}

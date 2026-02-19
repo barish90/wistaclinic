@@ -125,7 +125,10 @@ export default function PatientJourney({ dict }: PatientJourneyProps) {
   const steps: Array<{ title: string; description: string }> =
     dict?.home?.journey?.steps || [];
 
-  const stepCount = steps.length || 5;
+  const stepCount = steps.length;
+
+  // Nothing to render if no steps are defined
+  if (stepCount === 0) return null;
 
   const checkMobile = useCallback(() => {
     setIsMobile(window.innerWidth < 1024);

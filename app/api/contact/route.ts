@@ -46,7 +46,7 @@ export async function POST(request: Request) {
       message: 'Thank you for your message. We will contact you soon!',
     });
   } catch (error) {
-    console.error('Error in contact route:', error);
+    console.error('Error in contact route:', error instanceof Error ? error.message : 'Unknown error');
     return NextResponse.json(
       { success: false, errors: { _form: ['An unexpected error occurred. Please try again.'] } },
       { status: 500 }

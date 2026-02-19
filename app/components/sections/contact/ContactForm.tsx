@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -50,14 +50,14 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 const STORAGE_KEY = 'wista_contact_form';
 
 export function ContactForm({ labels, className }: ContactFormProps) {
-  const contactFormSchema = z.object({
+  const contactFormSchema = useMemo(() => z.object({
     name: z.string().min(2, labels.errorMessages?.nameMin ?? 'Name must be at least 2 characters'),
     email: z.string().email(labels.errorMessages?.emailInvalid ?? 'Invalid email address'),
     phone: z.string().min(5, labels.errorMessages?.phoneMin ?? 'Phone number is required'),
     procedure: z.string().optional(),
     message: z.string().min(10, labels.errorMessages?.messageMin ?? 'Message must be at least 10 characters'),
     honeypot: z.string().max(0, 'Bot detected').optional(),
-  });
+  }), [labels.errorMessages?.nameMin, labels.errorMessages?.emailInvalid, labels.errorMessages?.phoneMin, labels.errorMessages?.messageMin]);
 
   type ContactFormValues = z.infer<typeof contactFormSchema>;
   const [status, setStatus] = useState<FormStatus>('idle');
@@ -101,15 +101,22 @@ export function ContactForm({ labels, className }: ContactFormProps) {
     } catch { /* localStorage unavailable or corrupted */ }
   }, [reset]);
 
-  // Persist form values to localStorage on change
+  // Persist form values to localStorage on change (debounced)
+  const saveTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   useEffect(() => {
     const subscription = watch((values) => {
-      try {
-        const { honeypot: _, ...saveable } = values;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(saveable));
-      } catch { /* quota or private mode */ }
+      clearTimeout(saveTimerRef.current);
+      saveTimerRef.current = setTimeout(() => {
+        try {
+          const { honeypot: _, ...saveable } = values;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(saveable));
+        } catch { /* quota or private mode */ }
+      }, 500);
     });
-    return () => subscription.unsubscribe();
+    return () => {
+      clearTimeout(saveTimerRef.current);
+      subscription.unsubscribe();
+    };
   }, [watch]);
 
   const onSubmit = async (data: ContactFormValues) => {

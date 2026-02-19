@@ -20,13 +20,13 @@ interface MobileNavProps {
 
 export function MobileNav({ locale, dict, open, onOpenChange }: MobileNavProps) {
   const navItems = [
-    { href: `/${locale}/`, label: dict.nav.home },
-    { href: `/${locale}/about`, label: dict.nav.about },
-    { href: `/${locale}/procedures`, label: dict.nav.procedures },
-    { href: `/${locale}/doctors`, label: dict.nav.doctors },
+    { href: `/${locale}/`, label: dict.nav.home || 'Home' },
+    { href: `/${locale}/about`, label: dict.nav.about || 'About' },
+    { href: `/${locale}/procedures`, label: dict.nav.procedures || 'Procedures' },
+    { href: `/${locale}/doctors`, label: dict.nav.doctors || 'Doctors' },
     { href: `/${locale}/gallery`, label: dict.nav.gallery || 'Gallery' },
     { href: `/${locale}/testimonials`, label: dict.nav.testimonials || 'Testimonials' },
-    { href: `/${locale}/contact`, label: dict.nav.contact },
+    { href: `/${locale}/contact`, label: dict.nav.contact || 'Contact' },
   ];
 
   const handleLinkClick = () => {

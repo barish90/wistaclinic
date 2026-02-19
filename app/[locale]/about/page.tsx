@@ -30,31 +30,31 @@ export default async function AboutPage({ params }: AboutPageProps) {
       <div className="min-h-screen">
         {/* Hero Section */}
         <PhilosophyHero
-          title={dict.about.hero.title}
-          description={dict.about.hero.description}
+          title={dict.about?.hero?.title ?? 'About Us'}
+          description={dict.about?.hero?.description ?? ''}
         />
 
         {/* Values Section */}
         <AnimatedSection animation="fadeUp">
           <ValuesGrid
-            title={dict.about.values.title}
-            values={dict.about.values.items}
+            title={dict.about?.values?.title ?? 'Our Values'}
+            values={dict.about?.values?.items ?? []}
           />
         </AnimatedSection>
 
         {/* Clinic Tour Section */}
         <AnimatedSection animation="fadeUp" delay={0.2}>
           <ClinicTour
-            title={dict.about.tour.title}
-            description={dict.about.tour.description}
+            title={dict.about?.tour?.title ?? 'Our Clinic'}
+            description={dict.about?.tour?.description ?? ''}
           />
         </AnimatedSection>
 
         {/* Accreditations Section */}
         <AnimatedSection animation="fadeUp" delay={0.3}>
           <Accreditations
-            title={dict.about.accreditations.title}
-            description={dict.about.accreditations.description}
+            title={dict.about?.accreditations?.title ?? 'Accreditations'}
+            description={dict.about?.accreditations?.description ?? ''}
           />
         </AnimatedSection>
       </div>

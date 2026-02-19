@@ -47,8 +47,20 @@ export function SectionReveal({ children, className }: SectionRevealProps) {
     };
   }, [gsapReady]);
 
+  // Fallback: if GSAP never loads, show content after a delay
+  useEffect(() => {
+    if (gsapReady) return; // GSAP will handle visibility
+    const fallbackTimer = setTimeout(() => {
+      if (ref.current) {
+        ref.current.style.opacity = '1';
+        ref.current.style.transform = 'none';
+      }
+    }, 3000);
+    return () => clearTimeout(fallbackTimer);
+  }, [gsapReady]);
+
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={className} style={{ opacity: 0, transform: 'translateY(80px)' }}>
       {children}
     </div>
   );

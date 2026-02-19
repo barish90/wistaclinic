@@ -28,8 +28,8 @@ export default async function ProceduresPage({ params }: ProceduresPageProps) {
       <div className="min-h-screen py-20 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title={dict.procedures.index.title}
-            subtitle={dict.procedures.index.subtitle}
+            title={dict.procedures?.index?.title ?? 'Our Procedures'}
+            subtitle={dict.procedures?.index?.subtitle ?? ''}
             className="mb-16"
           />
 

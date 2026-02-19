@@ -2,6 +2,7 @@
 
 import { createContext, useEffect, useState, type ReactNode } from 'react';
 import { loadGsap } from '@/app/utils/loadGsap';
+import { reportError } from '@/lib/errors';
 
 export interface GsapContextValue {
   gsapReady: boolean;
@@ -86,7 +87,7 @@ export function GsapProvider({ children }: GsapProviderProps) {
         }
       })
       .catch((error) => {
-        console.error('Failed to load GSAP:', error);
+        reportError(error, 'GsapProvider');
         if (!cancelled) setGsapReady(false);
       });
 

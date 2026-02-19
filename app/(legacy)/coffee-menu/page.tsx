@@ -253,11 +253,12 @@ export default function CoffeeMenu() {
                       <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
                         {/* Image */}
                         <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-700">
-                          <img
+                          <Image
                             src={menuItem.image}
                             alt={menuItem.name}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                            loading="lazy"
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 

@@ -40,14 +40,14 @@ export function Footer({ locale, dict }: FooterProps) {
               <Logo size="lg" />
             </Link>
             <p className="text-sm text-muted-foreground max-w-md leading-relaxed">
-              {dict.footer.description}
+              {dict.footer?.description ?? ''}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h3 className="font-serif text-lg font-semibold mb-4 text-foreground">
-              {dict.footer.quickLinks}
+              {dict.footer?.quickLinks ?? 'Quick Links'}
             </h3>
             <ul className="space-y-3">
               {navItems.map((item) => (
@@ -66,29 +66,29 @@ export function Footer({ locale, dict }: FooterProps) {
           {/* Contact Info */}
           <div>
             <h3 className="font-serif text-lg font-semibold mb-4 text-foreground">
-              {dict.footer.contactUs}
+              {dict.footer?.contactUs ?? 'Contact Us'}
             </h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-                <span>{dict.contact.info.address}</span>
+                <span>{dict.contact?.info?.address ?? ''}</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />
                 <a
-                  href={`tel:${dict.contact.info.phone}`}
+                  href={`tel:${dict.contact?.info?.phone ?? ''}`}
                   className="transition-colors hover:text-primary"
                 >
-                  {dict.contact.info.phone}
+                  {dict.contact?.info?.phone ?? ''}
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 shrink-0 text-primary" />
                 <a
-                  href={`mailto:${dict.contact.info.email}`}
+                  href={`mailto:${dict.contact?.info?.email ?? ''}`}
                   className="transition-colors hover:text-primary"
                 >
-                  {dict.contact.info.email}
+                  {dict.contact?.info?.email ?? ''}
                 </a>
               </li>
             </ul>
@@ -101,21 +101,21 @@ export function Footer({ locale, dict }: FooterProps) {
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
             <p className="text-sm text-muted-foreground">
-              &copy; {currentYear} WistaClinic. {dict.footer.rights}
+              &copy; {currentYear} WistaClinic. {dict.footer?.rights ?? 'All rights reserved.'}
             </p>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <Link
                 href={`/${locale}/privacy`}
                 className="transition-colors hover:text-primary"
               >
-                {dict.footer.privacyPolicy}
+                {dict.footer?.privacyPolicy ?? 'Privacy Policy'}
               </Link>
               <span>&middot;</span>
               <Link
                 href={`/${locale}/terms`}
                 className="transition-colors hover:text-primary"
               >
-                {dict.footer.termsOfService}
+                {dict.footer?.termsOfService ?? 'Terms of Service'}
               </Link>
             </div>
           </div>
@@ -123,7 +123,7 @@ export function Footer({ locale, dict }: FooterProps) {
           {/* Social Links */}
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground mr-2">
-              {dict.footer.followUs}:
+              {dict.footer?.followUs ?? 'Follow Us'}:
             </span>
             {socialLinks.map((social) => (
               <a

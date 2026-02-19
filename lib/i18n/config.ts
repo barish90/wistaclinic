@@ -17,3 +17,16 @@ export const localeNames: Record<Locale, string> = {
 export function isValidLocale(locale: string): locale is Locale {
   return locales.includes(locale as Locale);
 }
+
+/** OpenGraph locale identifiers for each supported locale */
+export const OG_LOCALE_MAP: Record<Locale, string> = {
+  en: 'en_US',
+  tr: 'tr_TR',
+  de: 'de_DE',
+  fr: 'fr_FR',
+  es: 'es_ES',
+  it: 'it_IT',
+  ar: 'ar_SA',
+  ru: 'ru_RU',
+  zh: 'zh_CN',
+};
